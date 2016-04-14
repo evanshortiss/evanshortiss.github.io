@@ -8,7 +8,7 @@
 # Site settings
 title: Evan Shortiss
 email: evanshortiss@gmail.com
-description: I'm Evan, a Software Engineer working at FeedHenry by Red Hat. I like to write code, write about code, take photographs, and play video games when life allows.
+description: I'm Evan, a developer working at Red Hat Mobile. I like to write code, write about code, take photographs, and play video games when life allows.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://evanshortiss.com" # the base hostname & protocol for your site
 twitter_username: evanshortiss
