@@ -2,7 +2,7 @@
 published: true
 title: Battling with the Android Download Manager
 layout: post
-categories: bower javascript
+categories: development javascript
 ---
 
 As part of a project I was working on recently we needed to get a Cordova application to download PDF files generated provided by a Node.js backend to the Android, iOS, and Desktop Browser frontend applications. For iOS and Desktop this was trivial, but on Android it turned out to be bit of a struggle.

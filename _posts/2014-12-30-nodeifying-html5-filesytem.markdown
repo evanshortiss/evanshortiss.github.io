@@ -2,7 +2,7 @@
 published: true
 title: Node-ifying the HTML5/Cordova FileSystem API
 layout: post
-categories: browserify javascript node.js nodejs npm cordova
+categories: development javascript
 ---
 
 

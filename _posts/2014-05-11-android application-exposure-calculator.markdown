@@ -2,7 +2,7 @@
 published: true
 title: Android Application - Exposure Calculator
 layout: post
-categories: mobile ios android angular angularjs ionic
+categories: development mobile
 ---
 
 After much time thinking it over I've finally went ahead and finished writing a mobile applicaiton for iOS and Android - [Exposure Calculator](https://play.google.com/store/apps/details?id=com.evanshortiss.exposurecalculator). It's thoroughly unoriginal but it's a nice start! I felt it was somewhat required of me as a Software Engineer, who largely works in the capacity of writing mobile applications, to personally publish an app.

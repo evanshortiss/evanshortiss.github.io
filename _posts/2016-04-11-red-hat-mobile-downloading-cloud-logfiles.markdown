@@ -2,7 +2,7 @@
 published: true
 title: Red Hat Mobile - Downloading Cloud Application Logs
 layout: post
-categories: rhmap red hat mobile fhc
+categories: development rhmap
 ---
 Recently I found that I needed to fetch all the logs for a Node.js application running on the Red Hat Mobile Application platform. Fetching logs is easy via our Studio UI, but fetching all files automatically requires some extra effort. Thankfully we have fhc, a command line interface that can be used to interact with your instance of Red Hat Mobile.
 

@@ -2,7 +2,7 @@
 published: true
 title: Creating Express Middleware for flickr
 layout: post
-categories: flickr photography design npm nodejs node.js javascript express
+categories: development javascript photography
 ---
 
 _Note: My website is no longer running this since I've moved to Jekyll. Screenshots at the conclusion of this post show what can be achived by using this module._

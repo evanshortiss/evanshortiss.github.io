@@ -2,7 +2,7 @@
 published: true
 title: SNS Push Notifications using Node.js
 layout: post
-categories: mobile sns push amazon ios android
+categories: development mobile
 ---
 # Introduction
 Recently I had to use Amazon's SNS service to send Push Notifications to a mobile application being developed for iOS and Android.

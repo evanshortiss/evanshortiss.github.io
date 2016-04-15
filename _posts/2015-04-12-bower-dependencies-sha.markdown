@@ -2,7 +2,7 @@
 published: true
 title: Setting Bower Dependencies to a SHA
 layout: post
-categories: bower javascript
+categories: development javascript
 ---
 
 This is just a quick one as a reminder to myself and a tip to everyone else.

@@ -2,7 +2,7 @@
 published: true
 title: safejson - It's the little things in life!
 layout: post
-categories: nodejs node.js javascript npm json
+categories: development javascript
 ---
 
 Humans. We're lazy. We also like things to be aesthetically pleasing. OK, Maybe that's just me.

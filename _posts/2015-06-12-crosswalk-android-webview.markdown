@@ -2,7 +2,7 @@
 published: true
 title: Crosswalk - The Answer to (most) Android WebView Woes
 layout: post
-categories: crosswalk cordova mobile
+categories: development mobile
 ---
 
 Day to day at FeedHenry (by Red Hat) we bundle the vast majority of our applications using Cordova. This has some huge benefits for us, the obvious one being a single codebase for running an application on multiple platforms. Like any convenience however it has some drawbacks.

@@ -2,7 +2,7 @@
 published: true
 title: Sharable JavaScript Modules
 layout: post
-categories: browserify javascript node.js nodejs npm
+categories: development javascript
 ---
 
 
