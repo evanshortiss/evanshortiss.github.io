@@ -59,7 +59,7 @@ The difference is subtle, but it significantly improves our testing ability and 
 
 * The full mount path is defined on the router e.g "/users/:username" so we can detect if the route is mounted incorrectly in unit tests.
 * Each invocation returns a unique router instance.
-* Dependencies can be injected. This means a router is configurable.
+* Dependencies can be injected. This means a router is configurable, and reusable.
 * Easier to mount routers uniquely to many express instances if required without clearing the _require_ cache.
 * Testing is simplified since we can create a unique router prior to each test without clearing the _require_ cache.
 
@@ -95,12 +95,6 @@ module.exports = function (app) {
   });
 };
 ```
-
-There are a number of benefits to this structure:
-
-* Dependencies can be injected. This means a router is configurable, and reusable.
-* Router instances are not cached by _require_. This makes it easier to mount them uniquely to many express instances if required without clearing the _require_ cache.
-* Testing is simplified since we can easily create a unique router prior to each test to avoid shared state.
 
 # Testing
 
