@@ -16,10 +16,3 @@ github_username:  evanshortiss
 
 # Build settings
 markdown: kramdown
-
-analytics :
-  provider : google
-  google :
-      tracking_id : 'UA-75946220-2'
-  getclicky :
-    site_id :
