@@ -1,0 +1,46 @@
+---
+published: true
+title: No-nonsense Logging on Red Hat Mobile
+layout: post
+categories: development rhmap
+---
+
+On a recent customer engagement myself and Red Hat Mobile consultants needed to
+write a logging solution that could be used across a number of Node.js
+microservices. It had to use a standard logging module, but provide sensible
+defaults too depending on what environment our Node.js code was running in. We
+created [fh-bunyan](https://github.com/evanshortiss/fh-bunyan) to address this
+need.
+
+_fh-bunyan_ exposes an interface that returns standard _bunyan_ logger
+instances, but it will configure them using sensible defaults depending on the
+environment your application is running in. Environment in this instance refers
+to the value of _process.env.FH_ENV_. Here are the default levels:
+
+* dev - trace
+* test - debug
+* preprod - info
+* prod - info
+
+These can even be reconfigured by using the _setLogMappings(map)_ function too,
+so if you don't like the defaults then that's fine! You could do the following
+to configure them to your liking:
+
+```js
+var bunyan = require('fh-bunyan');
+
+bunyan.setLogMappings({
+  dev: 'trace',
+  test: 'info',
+  preprod: 'info',
+  prod: 'warn'
+});
+
+var log = bunyan.getLogger(__filename);
+
+log.debug('debug level - only appears in dev due to our mappings!');
+log.info('info level - only appears in test, preprod, and prod!');
+```
+
+Now you can write more code, and worry less about choosing a log library and
+configuring it across all of your Red Hat Mobile MBaaS environments!
