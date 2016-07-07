@@ -84,7 +84,7 @@ I guess [this](https://xkcd.com/927/) is relevant?
 
 ### expeditious to the rescue?
 In an either bold, or insane move I decided to try my hand at creating a better
-solution to this problem and ended up create the project _expeditious_. Needless
+solution to this problem and ended up creating the project _expeditious_. Needless
 to say it got out of hand quickly, and currently there are three expeditious
 related modules I've published:
 
