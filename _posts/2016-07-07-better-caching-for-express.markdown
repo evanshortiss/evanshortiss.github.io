@@ -110,7 +110,6 @@ solution that can be used in any node.js or JavaScript application.
 The end result? Pretty neat:
 
 {% highlight js %}
-
 var expeditious = require('expeditious');
 var app = require('express')();
 
@@ -121,9 +120,7 @@ var cache = expeditious({
   // Default expiry
   defaultTtl: (120 * 1000),
   // Where items are stored
-  engine: require('expeditious-engine-memory')(),
-  // Parse objects as they enter/exit cache
-  objectMode: true
+  engine: require('expeditious-engine-memory')()
 });
 
 // Middleware instance
@@ -139,15 +136,15 @@ var expressCache = require('express-expeditious')({
 // Cache any GET requests that come into our application
 app.use(expressCache);
 
-// Later in your application...
-cache.keys({}, function (err, keys) {
- if (err) {
-   console.error('failed to get keys', err);
- } else {
-   // Delete/modify keys using cache.del/cache.set
- }
+// Route that responds in 5 seconds, will respond immediately for subsequent
+// calls for the next 120 seconds thanks to express-expeditious
+app.get('/ping', function (req, res) {
+  setTimeout(function () {
+    res.end('pong');
+  }, 5000);
 });
 
+app.listen(3000)
 {% endhighlight %}
 
 
@@ -155,5 +152,7 @@ cache.keys({}, function (err, keys) {
 There are many ways to architect a solution, and while this works for some
 node.js applications, you might have another approach or layer for solving your
 caching needs.
+
+If you'd like to get started checkout the example for [_express-expeditious_](https://github.com/evanshortiss/express-expeditious/tree/master/example).
 
 Go forth and cut those response times down to size!
