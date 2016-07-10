@@ -27,8 +27,10 @@ app.get('/users', function (req, res, next) {
 
   function onUsers (err, users) {
     if (err) {
+      // Error, pass it to the express error handler
       next(err);
     } else {
+      // Store items in cache and respond
       cache.set('/users', users);
       res.json(users);
     }
@@ -36,14 +38,19 @@ app.get('/users', function (req, res, next) {
 
   cache.get('/users', function onCacheRes (err, users) {
     if (err) {
+      // Error, we need to run the actual function
       legacy.getUsers(onUsers);
     } else if (users) {
+      // Awesome, we got data from the cache!
       onUsers(null, users)
     } else {
+      // No data was cached, gotta run the function
       legacy.getUsers(onUsers)
     }
   });
 });
+
+app.listen(process.env.APP_PORT || 3000);
 
 {% endhighlight %}
 
@@ -51,7 +58,8 @@ There's nothing particularly wrong with this code, but I'd rather not have to
 write this for each of my routes since it will mean more testing effort,
 increased likelihood of bugs, and is not [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 Also, what if you need custom caching logic based on the response from the
-_getUsers_ call? This can get messy pretty quickly.
+_getUsers_ call? This can get messy pretty quickly, and is often too intrusive
+for me since it affects how functions are written.
 
 ### npm to the rescue?
 A better solution to this problem is to create an express middleware that does
@@ -60,8 +68,10 @@ and headed to npmjs.org to find such a module, but was met with some
 disappointment. Most of the modules in the wild perform caching, but come with
 caveats:
 
-* They override methods on the _response (res)_ Object which can lead to
+* They override functions on the _response (res)_ Object which can lead to
 errors and confusion as well as slow down in response time if done incorrectly
+* Some functions on the _response (res)_ Object are forgotten about meaning
+caching does not occur and you're lost as to why.
 * A cache store interface is not exposed so it's not possible to
 programmatically interact with the underlying cache when you need to delete or
 modify entries
@@ -78,7 +88,7 @@ returned repeatedly for longer than necessary
 over cache conflicts
 * They're unable to cache piped responses, i.e _request.get(URL).pipe(res)_
 
-Since I tend to be a perfectionist at times, these issues wouldn't stand! There
+Since I tend to be a perfectionist at times, these issues wouldn't stand. There
 was only one solution; write yet another caching module.
 I guess [this](https://xkcd.com/927/) is relevant?
 
@@ -104,10 +114,13 @@ code is the only change required to change the data store
 available for programmatic modification meaning middleware is not a black hole
 
 Beside this, express-expeditious offers a solution for the drawbacks I found
-with the existing express modules and it also serves as a standalone caching
-solution that can be used in any node.js or JavaScript application.
+with the existing express caching modules. The expeditious core also serves as
+a standalone caching solution that can be used in any node.js or JavaScript
+application in a browser.
 
-The end result? Pretty neat:
+### using express-expeditious
+
+The end result? Pretty neat I think:
 
 {% highlight js %}
 var expeditious = require('expeditious');
@@ -144,8 +157,14 @@ app.get('/ping', function (req, res) {
   }, 5000);
 });
 
-app.listen(3000)
+app.listen(3000);
 {% endhighlight %}
+
+This is a trivial example and is by no means the only way to use
+express-expeditious. You can apply it to specific routes or _express.Router_
+instances for granular control. Thanks to the manner in which these modules
+work in unison, we can programmatically access the _cache.del_ method to remove
+"/ping" if some event occurred and new data became available.
 
 
 ### summary
