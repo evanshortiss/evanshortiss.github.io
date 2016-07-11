@@ -166,6 +166,62 @@ instances for granular control. Thanks to the manner in which these modules
 work in unison, we can programmatically access the _cache.del_ method to remove
 "/ping" if some event occurred and new data became available.
 
+### the results
+
+Taking a look at this fabricated test where only 25 concurrent requests can be
+made, we see that the total time for 1000 requests goes from 80.4 seconds to
+2.4 seconds. Not bad!
+
+#### without cache
+
+{% highlight text %}
+
+$ loadtest -n 1000 -c 25 http://127.0.0.1:3000/not-cached
+Target URL:          http://127.0.0.1:3000/not-cached
+Max requests:        1000
+Concurrency level:   25
+Agent:               none
+
+Completed requests:  1000
+Total errors:        0
+Total time:          80.420119519 s
+Requests per second: 12
+Total time:          80.420119519 s
+
+Percentage of the requests served within a certain time
+  50%      2008 ms
+  90%      2016 ms
+  95%      2022 ms
+  99%      2040 ms
+ 100%      2047 ms (longest request)
+
+{% endhighlight %}
+
+
+#### with cache
+
+{% highlight text %}
+
+$ loadtest -n 1000 -c 25 http://127.0.0.1:3000/cached
+Target URL:          http://127.0.0.1:3000/cached
+Max requests:        1000
+Concurrency level:   25
+Agent:               none
+
+Completed requests:  1000
+Total errors:        0
+Total time:          2.354407228 s
+Requests per second: 425
+Total time:          2.354407228 s
+
+Percentage of the requests served within a certain time
+  50%      6 ms
+  90%      11 ms
+  95%      48 ms
+  99%      2018 ms
+ 100%      2027 ms (longest request)
+
+{% endhighlight %}
 
 ### summary
 There are many ways to architect a solution, and while this works for some
