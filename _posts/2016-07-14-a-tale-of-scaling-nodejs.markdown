@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Small Scale - MongoDB and Node.js
 layout: post
 categories: development javascript nodejs
