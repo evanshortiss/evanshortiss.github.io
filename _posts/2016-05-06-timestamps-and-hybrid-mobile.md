@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Timezones and Mobile Applications
 layout: post
 categories: development
