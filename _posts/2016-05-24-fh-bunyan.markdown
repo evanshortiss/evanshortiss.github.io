@@ -39,7 +39,7 @@ bunyan.setLogMappings({
 var log = bunyan.getLogger(__filename);
 
 log.debug('debug level - only appears in dev due to our mappings!');
-log.info('info level - only appears in test, preprod, and prod!');
+log.info('info level - appears in dev, test, preprod, and prod!');
 ```
 
 Now you can write more code, and worry less about choosing a log library and
