@@ -33,6 +33,9 @@ function isInt (n) {
   return n === parseInt(n, 10)
 }
 
+// Need to actually parse the incoming POST data
+route.use(require('body-parser').json());
+
 route.post('/users', (req, res, next) => {
   let name = req.body.name;
   let age = req.body.age;
@@ -83,6 +86,8 @@ After refactoring your code to use the module system you’re likely to end up w
 // this is a function that contains our old validation logic
 const validateUser = require('lib/validations/user');
 const users = require('lib/dao/user');
+
+route.use(require('body-parser').json());
 
 route.post('/users', (req, res, next) => {
   // validates and returns the user object on success
@@ -149,6 +154,8 @@ const userSchema = Joi.object({
   age: Joi.number().integer().positive().max(150).required()
 });
 
+route.use(require('body-parser').json());
+
 route.post('/users', (req, res, next) => {
   // validates and returns the user object on success
   const ret = Joi.validate(req.body, userSchema, {
@@ -170,9 +177,9 @@ route.post('/users', (req, res, next) => {
 {% endhighlight %}
 
 ## Iteration #4 - Using Express Middleware
-In a final attempt to make our code as clean as possible we might like to have the ability to add Joi validation for different parts of a request payload, such as `req.query`, `req.headers` or even `req.params`.  For this I created an express middleware that makes doing so easy, but be sure to check out the alternatives too.
+In a final attempt to make our code as clean as possible we might like to have the ability to add Joi validation for different parts of a request payload, such as `req.query`, `req.headers` or even `req.params`.  For this I created an express middleware named [express-joi-validation](https://github.com/evanshortiss/express-joi-validation) that makes doing so easy, but be sure to check out the other alternatives on npm too.
 
-Here’s how you can use this middleware to validate a `req.body` .
+Here’s how you can use this middleware to validate a `req.body` of an incoming request:
 
 {% highlight js %}
 // get an express-joi instance, parameters are optional
@@ -185,6 +192,7 @@ const userSchema = Joi.object({
   age: Joi.number().integer().positive().max(150).required()
 });
 
+route.use(require('body-parser').json());
 
 // express-joi-validation will automatically validate and return a 400
 // error if req.body validation fails
@@ -268,4 +276,5 @@ Naturally, results might vary with different concurrency levels and more or less
 * Don’t write validations from scratch for serious applications without good reason.
 * Decouple validation code from router logic when possible.
 * Leverage node.js modules to quickly develop and integrate validations.
-* Using Joi validations can add a 7% to 12% performance hit (or more) depending on your data and validations.
+* Using Joi validations can add a 7% to 12% performance hit (or more) depending on your data and validations
+* Load test frequently!
