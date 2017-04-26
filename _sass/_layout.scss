@@ -22,6 +22,16 @@
     &:visited {
         color: $grey-color-dark;
     }
+
+    img {
+      transition: 0.5s ease-out;
+      transform: rotateZ(0deg);
+    }
+
+    img:hover {
+      transition: 0.5s ease-out;
+      transform: rotateZ(360deg);
+    }
 }
 
 .site-nav {
@@ -174,6 +184,7 @@
 .page-content img {
     margin: 0 auto;
     display: block;
+    border-radius: 0.2em;
 }
 
 .page-heading {

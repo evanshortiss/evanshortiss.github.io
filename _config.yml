@@ -16,3 +16,6 @@ github_username:  evanshortiss
 
 # Build settings
 markdown: kramdown
+
+gems:
+  - octopress-autoprefixer
