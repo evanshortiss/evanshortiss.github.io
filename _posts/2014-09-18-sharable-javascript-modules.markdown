@@ -43,16 +43,16 @@ There's not much to cover here if you know how Node.js' CommonJS module system o
 To run your module in a browser you'll need to _Browserify_ it. This is the easy part! As an example assume we wrote a module called _sqaured_ and want to run it in a browser.
 
 Here's the module code:
-```javascript
+{% highlight javascript %}
 /**
  * file: squared.js
  * Takes a number input and returns a squared result
  */
 
 module.exports = function (num) {
-	return Math.pow(num, 2);
+  return Math.pow(num, 2);
 };
-```
+{% endhighlight %}
 
 And here's how we can package it for a browser:
 
@@ -64,9 +64,9 @@ So what does the above command do? It takes an entry point (-e) and creates a st
 
 Here's how we could use it:
 
-```javascript
+{% highlight javascript %}
 window.sqaure(2);
-```
+{% endhighlight %}
 
 Any function that is bound to the exports object in your entry script (-e) is made accessible on the _window_ object.
 
@@ -83,7 +83,7 @@ Below is an example of how this can be handled using Browserify.
 
 Node.js HTTP abstraction:
 
-```javascript
+{% highlight javascript %}
 /**
  * file: http-wrapper.js
  * This file will be used for HTTP when
@@ -95,11 +95,11 @@ var request = require('request');
 exports.get = function (url, callback) {
   request.get(url, callback);
 };
-```
+{% endhighlight %}
 
 Browser HTTP abstraction:
 
-```javascript
+{% highlight javascript %}
 /**
  * file: http-wrapper-browser.js
  * This file will be used for HTTP in browsers
@@ -116,11 +116,11 @@ exports.get = function (url, callback) {
     callback
   );
 };
-```
+{% endhighlight %}
 
 So how do you use your HTTP abstraction? The way you always do, _require_ it!
 
-```javascript
+{% highlight javascript %}
 
 /**
  * file: index.js
@@ -137,7 +137,7 @@ function onResponse (err, res, body) {
 }
 
 http.get('http://www.google.com', onResponse);
-```
+{% endhighlight %}
 
 You may have noticed we used the Node.js HTTP wrapper in _index.js_ in the above example. We do this as the  default should always be to use the Node.js version. When Browserifying this module we can substitute the Node.js wrapper with the browser version by adding a configuration in the _package.json_ of this project using the _browser_ field. The browser field below is read when Browserify is bundling our project and replaces all requires for _http-wrapper.js_ with _http-wrapper-browser.js_. Now that's pretty darn cool.
 
@@ -163,7 +163,7 @@ Now we can Browserify this module and use it in either environment!
 
 If you're really sharp you might say "Hey! _xhr_ and _request_ share a very similar API. Why not just have one http file and replace _request_ with _xhr_?" Well. You're right! We could have written a single _http.js_ like so:
 
-```javascript
+{% highlight javascript %}
 /**
  * file: http.js
  */
@@ -171,12 +171,12 @@ If you're really sharp you might say "Hey! _xhr_ and _request_ share a very simi
 var request = require('request');
 
 exports.get = function (url, callback) {
-	request({
-    	method: 'GET',
-        url: url
-    }, callback);
+  request({
+    method: 'GET',
+    url: url
+  }, callback);
 };
-```
+{% endhighlight %}
 
 With this all we need to do is update the _package.json_ to have the following _browser_ field, but for the sake of the example it seemed appropriate to assume the APIs would be different.
 

@@ -12,7 +12,7 @@ Sometimes unit testing is a trivial affair, but that's not always the case. In t
 # Supertest to the Rescue! Sort of.
 Thankfully, the supertest library is available to assist us in our testing endeavours! Here's an example that uses supertest:
 
-```javascript
+{% highlight javascript %}
 describe('GET /ping', function () {
   it('should respond with "pong"', function (done) {
     request(require('./my-express-app.js'))
@@ -23,7 +23,7 @@ describe('GET /ping', function () {
       });
   });
 });
-```
+{% endhighlight %}
 
 The example above demonstrates that we can pass our express application server to the supertest library, and thereby run tests against the server. This is awesome, but doesn't come without challenges. For example, what happens in the scenario where we need to stub out dependencies that hit a live system, or that cause our tests to have a needlessly long execution time? We could use proxyquire, but that only allows us to stub dependencies one level deep. If we did that we would be stubbing out our routes, and not their dependencies that actually make the calls! Setting environment variables is another approach that might grant us some control, but this would become a deeply tedious manner of testing different paths throughout the codebase.
 
@@ -32,7 +32,7 @@ I've found that using inversion of control to mount express routers (instances o
 
 Typically in an express application you might bind routes to an application object in your entry point file. This is the approach that's often presented online in examples and tutorials, and is demonstrated below.
 
-```javascript
+{% highlight javascript %}
 // file: main.js
 var express = require('express');
 var app = express();
@@ -40,11 +40,11 @@ var userRoute = require('./user-route');
 
 // Mount user route to the express app, we specify "/users" as the path
 app.use('/users', userRoute);
-```
+{% endhighlight %}
 
 If we were to invert this, we'd create a small module that exports a function, pass the express object into the function, and have the function bind an _express.Router_ to the passed object. Here's an example of that in action.
 
-```javascript
+{% highlight javascript %}
 // file: main.js
 var express = require('express');
 var app = express();
@@ -53,7 +53,7 @@ var userRoute = require('./user-route');
 // Have user route mount itself to the express application, we could pass
 // other parameters too, such as middleware, or the mount path
 userRoute(app);
-```
+{% endhighlight %}
 
 The difference is subtle, but it significantly improves our testing ability and makes routers configurable.
 
@@ -65,7 +65,7 @@ The difference is subtle, but it significantly improves our testing ability and 
 
 Here's an example module that creates a router and binds it to an injected express application.
 
-```javascript
+{% highlight javascript %}
 
 // file: user-route.js
 var express = require('express');
@@ -94,13 +94,13 @@ module.exports = function (app) {
     }
   });
 };
-```
+{% endhighlight %}
 
 # Testing
 
 Below is a snippet that demonstrates how we can test our route in isolation from other components. It might appear to be complex at first glance, particularly if you haven't used sinon or proxyquire in the past, and that's fine! Take a read of the code and comments, then we'll cover some of the statements in a little more detail below.
 
-```javascript
+{% highlight javascript %}
 // We'll use this to override require calls in routes
 var proxyquire = require('proxyquire');
 // This will create stubbed functions for our overrides
@@ -172,7 +172,7 @@ describe('GET /ping', function () {
       });
   });
 });
-```
+{% endhighlight %}
 
 So what's happening in this test? The supertest calls, that's anywhere you see _request.METHOD_, are pretty digestible; you state the URL you want to make a request to, and then state your expectations. The real magic happens in the _beforeEach_. In this function we require our module, stub out it's dependencies using proxyquire, create an independent express application instance, and pass that express instance to our module. This means we have a minimal express application that contains the current route we need to perform tests on, and no more. Had we simply required our application entry point we'd potentially have to ensure a number of environment variables are configured, deal with startup tasks, and find a way to stub out dependencies that are nested more than one level deep.
 
@@ -187,4 +187,4 @@ As demonstrated it is relatively easy to test express routers in isolation, it j
 
 The image below is an example of the test output for the code above.
 
-![](https://dl.dropboxusercontent.com/u/4401092/blog/images/2016/Apr/Screen%20Shot%202016-04-15%20at%209.47.22%20AM.png)
+![](/res/img/posts/2016-04-15-express-testing-using-ioc/Screen%20Shot%202016-04-15%20at%209.47.22%20AM.png)

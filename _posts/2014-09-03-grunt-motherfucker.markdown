@@ -15,69 +15,69 @@ Personally I use CLI tools via Make 90% of the time. Why? It's faster, more reli
 
 For example, here's a Gruntfile that runs code quality checks using JSHint, linelint and lintspaces, tests using Mocha and finally builds a bundle using Browserify.
 
-```javascript
+{% highlight javascript %}
 
 'use strict';
 
 module.exports = function (grunt) {
 
-	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
+  grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
 
-		lintspaces: {
-			all: {
-				src: ['./src/**/*.js'],
-				options: {
-					newline: true,
-					trailingspaces: true,
-					indentation: 'spaces',
+    lintspaces: {
+      all: {
+        src: ['./src/**/*.js'],
+        options: {
+          newline: true,
+          trailingspaces: true,
+          indentation: 'spaces',
           spaces: 2
-				}
-			}
-		},
+        }
+      }
+    },
 
-		jshint: {
-			with_overrides: {
-				jshintrc: true,
-				files: {
-					src: ['./src/**/*.js']
-				}
-			}
-	  },
+    jshint: {
+      with_overrides: {
+        jshintrc: true,
+        files: {
+          src: ['./src/**/*.js']
+        }
+      }
+    },
 
-	  mocha: {
-		  test: {
-		  	options: {
-		      reporter: 'spec'
-		    },
-		    src: ['tests/*.js'],
-		  },
-		},
+    mocha: {
+      test: {
+        options: {
+          reporter: 'spec'
+        },
+        src: ['tests/*.js'],
+      },
+    },
 
-		browserify: {
-			dist: {
-		    options: {
-		      browserifyOptions: {
-		      	'e': './lib/LoggerFactory.js',
-		      	'o': './dist/fhlog.js',
-		      	's': 'fhlog'
-		      }
-		    }
-		  }
-		}
-	});
+    browserify: {
+      dist: {
+        options: {
+          browserifyOptions: {
+            'e': './lib/LoggerFactory.js',
+            'o': './dist/fhlog.js',
+            's': 'fhlog'
+          }
+        }
+      }
+    }
+  });
 
-	grunt.loadNpmTasks('grunt-mocha');
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.loadNpmTasks('grunt-lintspaces');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-mocha');
+  grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-lintspaces');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
-	grunt.registerTask('format', ['lintspaces:all', 'jhint:with_overrides']);
-	grunt.registerTask('build', ['format', 'browserify:dist']);
-	grunt.registerTask('test', ['build', 'mocha:test']);
+  grunt.registerTask('format', ['lintspaces:all', 'jhint:with_overrides']);
+  grunt.registerTask('build', ['format', 'browserify:dist']);
+  grunt.registerTask('test', ['build', 'mocha:test']);
 };
 
-```
+{% endhighlight %}
 
 Here's the equivalent Makefile.
 
@@ -90,21 +90,21 @@ default: format
 
 # Run tests, then build the JavaScript bundle
 build:format
-	$(browserify) -s fhlog -e ./lib/LoggerFactory.js -o ./dist/fhlog.js
-	@echo "Build succeeded!\n"
+  $(browserify) -s fhlog -e ./lib/LoggerFactory.js -o ./dist/fhlog.js
+  @echo "Build succeeded!\n"
 
 # Test files for formatting and errors, then run tests
 test:build
-	$(mocha) -R spec ./test/*.js
+  $(mocha) -R spec ./test/*.js
 
 # Test file formatting and for errors
 format:
-	$(linelint) $(srcFiles) $(testFiles)
-	@echo "linelint pass!\n"
-	$(lintspaces) -nt -i js-comments -d spaces -s 2 $(srcFiles)
-	@echo "lintspaces pass!\n"
-	$(jshint) $(srcFiles)
-	@echo "JSHint pass!\n"
+  $(linelint) $(srcFiles) $(testFiles)
+  @echo "linelint pass!\n"
+  $(lintspaces) -nt -i js-comments -d spaces -s 2 $(srcFiles)
+  @echo "lintspaces pass!\n"
+  $(jshint) $(srcFiles)
+  @echo "JSHint pass!\n"
 
 ```
 
@@ -114,4 +114,4 @@ On the other hand Grunt is fantastic for handling concatenation of CSS, performi
 
 Grunt is great for larger projects, but for many Node.js projects it's unnecessary. Choose the best tool for the job.
 
-![](https://dl.dropboxusercontent.com/u/4401092/blog/images/2015/06/samuel-1.jpg)
+![](/res/img/posts/2014-09-03-grunt-motherfucker/samuel.jpg)

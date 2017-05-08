@@ -26,7 +26,7 @@ user friendly.
 {"name":"/application.js","hostname":"ps-consult-na-rht-dev","pid":9736,"level":30,"msg":"App started at: Tue May 24 2016 20:22:03 GMT+0000 (UTC) on port: 8184","time":"2016-05-24T20:22:03.763Z","v":0}
 ```
 
-![fh-bunyan logs](https://dl.dropboxusercontent.com/u/4401092/blog/images/2016/May/Screen%20Shot%202016-05-25%20at%2008.13.55.png)
+![fh-bunyan logs](/res/img/posts/2016-05-25-pretty-print-logs-using-fhc/Screen%20Shot%202016-05-25%20at%2008.13.55.png)
 
 
 # ~~Not so~~ Pretty Logs
@@ -57,7 +57,7 @@ fhc app logs tail --app=$CLOUD_APP_ID --env=$CLOUD_APP_ENV
 This will print your logs to the terminal, but they're still not formatted in a
 friendly manner since _fhc_ simply streams them "as is".
 
-![fhc fh-bunyan logs](https://dl.dropboxusercontent.com/u/4401092/blog/images/2016/May/Screen%20Shot%202016-05-25%20at%2008.28.55.png)
+![fhc fh-bunyan logs](/res/img/posts/2016-05-25-pretty-print-logs-using-fhc/Screen%20Shot%202016-05-25%20at%2008.28.55.png)
 
 The solution? Use the bunyan CLI to pretty-print them! Run the following
 command and marvel at the beauty of your logs:
@@ -68,7 +68,7 @@ npm i -g bunyan
 fhc app logs tail --app=$CLOUD_APP_ID --env=$CLOUD_APP_ENV | bunyan
 ```
 
-![fhc fh-bunyan pretty logs](https://dl.dropboxusercontent.com/u/4401092/blog/images/2016/May/Screen%20Shot%202016-05-25%20at%2008.29.05.png)
+![fhc fh-bunyan pretty logs](/res/img/posts/2016-05-25-pretty-print-logs-using-fhc/Screen%20Shot%202016-05-25%20at%2008.29.05.png)
 
 This solution becomes even more powerful if you need to find specific logs
 since you can pipe to _grep_ and perform a realtime filter like so.
@@ -78,4 +78,4 @@ since you can pipe to _grep_ and perform a realtime filter like so.
 fhc app logs tail --app=$CLOUD_APP_ID --env=$CLOUD_APP_ENV | bunyan | grep -i "delete"
 ```
 
-![fhc fh-bunyan pretty logs](https://dl.dropboxusercontent.com/u/4401092/blog/images/2016/May/Screen%20Shot%202016-05-25%20at%2008.34.10.png)
+![fhc fh-bunyan pretty logs](/res/img/posts/2016-05-25-pretty-print-logs-using-fhc/Screen%20Shot%202016-05-25%20at%2008.34.10.png)

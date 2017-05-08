@@ -24,7 +24,7 @@ For an application of this type it's not a requirement to continually calculate 
 
 In my application, when a user requires a shutter speed greater than 30 seconds (represented as 30") the application will perform the neccessary photographic calculations to determine the required shutter speed as anything greater than 30 seconds is not in the pre-generated tables. I used the code below to calculate the shutter speed. The *requiredIndex* variable represents how many stops difference there is between the base shutter speed and the required shutter speed accounting for full stops, half stops or third stops.
 
-```javascript
+{% highlight javascript %}
 function calcShutterSpeed(requiredIndex) {
   // Get value of 1/X as a decimal i.e 1/3 -> 0.33333
   var stops = (1 / parseInt($scope.increments.split('/')[1]));
@@ -43,7 +43,7 @@ function calcShutterSpeed(requiredIndex) {
     return seondsToFormattedTime(res);
   }
 }
-```
+{% endhighlight %}
 
 
 ## Wait. It's hybrid! What about iOS?
@@ -56,7 +56,7 @@ For the Android version of this application I checked out the [design section](h
 
 To override the default iOS friendly styles of Ionic I simply injected a small CSS file like so into my index.html based on the device User-Agent. Naturally the Cordova device plugin is also an acceptable solution for device detection. Seemples!
 
-```javascript
+{% highlight javascript %}
 var ua = navigator.userAgent;
 
 if (ua.match(/Android/)) {
@@ -66,11 +66,11 @@ if (ua.match(/Android/)) {
 
   document.head.appendChild(tag);
 }
-```
+{% endhighlight %}
 
 Exposure Calculator doesn't make too much use of colour as I didn't think it appropriate. The only real use of colour is to inform users that entered settings are out of the standard exposure ranges generally possible by changing the Equivalent Exposure field red and a blue accent on a slider. The screenshot below shows the application running on my Galaxy S3 with an exposure that requires a shutter speed greater than 1/8000th of a second.
 
-![](https://dl.dropboxusercontent.com/u/4401092/blog/images/2014/May/Screenshot_2014_05_11_16_07_28.png)
+![](/res/img/posts/2014-05-11-android application-exposure-calculator/Screenshot_2014_05_11_16_07_28.png)
 
 ## What's next?
 iOS! Now that the Android version of this application is in a condition I'm satisfied with I'm ready to tweak it for iOS and push it out ASAP.

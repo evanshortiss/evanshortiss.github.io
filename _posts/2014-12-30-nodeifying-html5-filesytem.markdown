@@ -13,7 +13,7 @@ Back in April this year I started working on this project in Boston Logan Airpor
 ## The Project
 As part of another project I require an easy to use manner of accessing the HTML5 FileSystem; this means I absolutely don't want to use the plain old FileSystem API like so:
 
-```javascript
+{% highlight javascript %}
 function writeFile(success, fail) {
   // fileSystem can be assumed defined previously
   fileSystem.root.getDirectory('/test/', {
@@ -40,11 +40,11 @@ function writeFile(success, fail) {
     }, fail);
   }, fail);
 }
-```
+{% endhighlight %}
 
 There's nothing wrong with the FileSystem API really, but that's far to much effort for one to read and write (no pun intended). I'd prefer a Node.js style API like the one below:
 
-```javascript
+{% highlight javascript %}
 function writeFile(callback) {
   fs.mkdir('test', function (err) {
     if (err) {
@@ -54,20 +54,20 @@ function writeFile(callback) {
     }
   });
 }
-```
+{% endhighlight %}
 
 Clearly the second piece of code here is more concise, understandable to anyone (especially if they've used Node.js), and much less error prone to write. Oh, it also uses a single callback pattern so you can pop it into [async](https://github.com/caolan/async) calls without the need to wrap your success and failure callbacks. Nice, right!?
 
 ## Introducing _html5-fs_
 Well that second example above is exactly what I did with the module [html5-fs](https://www.github.com/evanshortiss/html5-fs). I ended up developing the module as part of a component for another small project I was working on. My reason for doing this was because the other project is also a Node.js module wrapped using Browserify, but needs the ability to read and write to the file system which requires two very different APIs, one on the client (primarily Cordova applications) and one on the cloud (Node.js). I didn't feel like writing an abstraction that would bridge the calls within the project; instead I wanted a module that I could directly drop in as a replacement for the standard Node.js module on the client with as few differences as possible. In other words I'd just add the following to my _package.json_ and wouldn't need any extra logic to handle client vs. server environments:
 
-```json
+{% highlight json %}
 {
   "browser": {
     "fs": "html5-fs"
   }
 }
-```
+{% endhighlight %}
 
 This line would tell browserify that when it was bundling my JavaScript that any require calls to _fs_ would be replaced with _html5-fs_. Sounds bizarre? Probably, but because _html5-fs_ has the same interface as _fs_ it works, albeit with some exceptions if you need to use the entire feature set of the Node.js API.
 
@@ -80,7 +80,7 @@ The FileSystem API uses a dual callback structure by default. Node.js uses a sin
 
 Users of _html5-fs_ need only provide a single callback as this is wrapped via the below functions and then passed to the native FileSystem calls for you. Essentially these functions just take the args to the usual success and failure callbacks and provide them as a tuple _[err, result]_ to be passed to your provided single callback as args depending on the result.
 
-```javascript
+{% highlight javascript %}
 
 /**
  * Wrap a callback for use as a success callback.
@@ -110,7 +110,7 @@ exports.wrapFail = function(callback) {
   };
 };
 
-```
+{% endhighlight %}
 
 #### Browser Inconsistencies
 Thankfully browser inconsistencies have thus far been minimal, with the minor exception of how they expose their FileSystem initialisation API calls.
@@ -119,7 +119,7 @@ Chrome and Opera expose either _window.webkitStorageInfo_ and/or _window.navigat
 
 All of these expose a method of requesting a FileSystem instance. For example:
 
-```javascript
+{% highlight javascript %}
 
 // Most recent API in browsers
 window.navigator.webkitRequestFileSystem(
@@ -141,17 +141,17 @@ window.requestFileSystem(
       success,
       fail);
 
-```
+{% endhighlight %}
 
 Using _html5-fs_ users only need to call the following and not worry about the calls demonstrated above:
 
-```javascript
+{% highlight javascript %}
 fs.init(bytes, callback);
-```
+{% endhighlight %}
 
 You might rightly say something such as "Hey, that's not compatible with the Node.js _fs_ module, we can't just drop it in as a replacement!" and you'd be _almost_ right. Unfortuantely it's required, but can easily be worked around in a few ways, the simplest of which is provided below.
 
-```javascript
+{% highlight javascript %}
 
 function initApplication(callback) {
 	if (fs.init) {
@@ -164,13 +164,13 @@ function initApplication(callback) {
 }
 
 
-```
+{% endhighlight %}
 
 
 #### Debugging
 The Android WebView proved to be a little more problematic to work with than other browsers, or could be better described as finicky. Tests that were passing on iOS and desktop browsers were failing on Android. It took me a long time to figure out why these were failing. The first issue was that Blob wasn't supported on the Android browser so writing files failed due to an incorrect platform check that I was performing. It looked a little like this
 
-```javascript
+{% highlight javascript %}
 if (isMobile()) {
   // I never got in here on Android
   writer.write(data)
@@ -181,13 +181,13 @@ if (isMobile()) {
   }));
 }
 
-```
+{% endhighlight %}
 
 Another issue I encountered was that on Android if I tried to create a directory that wasn't at the root of the application's storage directory it would always fail with a timeout error. Digging deeper with _adb logcat_ revealed that a null pointer error was thrown in the native FileSystem plugin code whenever such a call was made. I resolved this by getting a reference to the containing directory first and then creating the new file or folder using that reference; not a perfect solution but a workable one.
 
 [Weinre](https://www.npmjs.com/package/weinre) is your friend when it comes to debugging Cordova apps and was great here as it gave me a JavaScript playground to run my library on Andoird in an interactive manner. Just run it like so:
 
-```
+```bash
 npm i -g weinre
 weinre --httpPort {PORT} --boundHost {YOUR-IP}
 ```
@@ -201,7 +201,7 @@ For Cordova applications on iOS and Android I performed testing by dumping the r
 
 Testing can be carried out by running either:
 
-```
+```bash
 grunt test // Tests browsers (Opera and Chrome)
 grunt test-ios
 grunt test-android
@@ -210,11 +210,11 @@ grunt test-android
 
 The following output is shown when running the iOS, Android, and Karma tests respectively.
 
-![iOS Simulator](https://dl.dropboxusercontent.com/u/4401092/blog/images/2014/Dec/html5_fs_ios.png)
+![iOS Simulator](/res/img/posts/2014-12-30-nodeifying-html5-filesytem/html5_fs_ios.png)
 
-![Android Emulator](https://dl.dropboxusercontent.com/u/4401092/blog/images/2014/Dec/html5_fs_android.png)
+![Android Emulator](/res/img/posts/2014-12-30-nodeifying-html5-filesytem/html5_fs_android.png)
 
-![Karma Tests](https://dl.dropboxusercontent.com/u/4401092/blog/images/2014/Dec/html5_fs_karma.png)
+![Karma Tests](/res/img/posts/2014-12-30-nodeifying-html5-filesytem/html5_fs_karma.png)
 
 
 ## What Next?

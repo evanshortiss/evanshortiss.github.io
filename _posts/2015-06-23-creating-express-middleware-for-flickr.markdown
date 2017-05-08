@@ -58,7 +58,7 @@ It might also be useful to expand the API in the future to allow it to return th
 
 Here's an example of how the module can be added to an Express app. You can load the middleware synchrnously by not providing a callback, but it is not recommended since if the initialisation fails your gallery will not be served as expected.
 
-```javascript
+{% highlight javascript %}
 'use strict';
 
 var express = require('express')
@@ -108,7 +108,7 @@ function onGalleryLoaded (err, route) {
     });
   }
 }
-```
+{% endhighlight %}
 
 
 If you'd like to check out either module here are links to their source. They can also be installed via npm:
@@ -116,6 +116,5 @@ If you'd like to check out either module here are links to their source. They ca
 * [express-flickr-gallery](https://github.com/evanshortiss/express-flickr-gallery)
 * [flickr-urls](https://github.com/evanshortiss/flickr-urls)
 
-### Examples
-![](https://dl.dropboxusercontent.com/u/4401092/blog/images/2015/06/Screen%20Shot%202016-04-13%20at%209.12.07%20PM.png)
-![](https://dl.dropboxusercontent.com/u/4401092/blog/images/2015/06/Screen%20Shot%202016-04-13%20at%209.05.42%20PM.png)
+### Example
+![](/res/img/posts/2015-06-23-creating-express-middleware-for-flickr/Screen%20Shot%202016-04-13%20at%209.12.07%20PM.png)

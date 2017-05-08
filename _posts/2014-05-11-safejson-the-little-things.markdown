@@ -11,28 +11,28 @@ As a developer who frequently works with JSON I don't like seeing a try catch ea
 
 Using try/catch works fine.
 
-```javascript
+{% highlight javascript %}
 try {
-	return callback(null, JSON.parse(str))
+  return callback(null, JSON.parse(str))
 } catch (e) {
-	return callback(e, null);
+  return callback(e, null);
 }
-```
+{% endhighlight %}
 
 But this is much nicer!
 
-```javascript
+{% highlight javascript %}
 safejson.parse(SOME_STRING, callback);
-```
+{% endhighlight %}
 
 How about *JSON.stringify*? Yup.
 
-```javascript
+{% highlight javascript %}
 safejson.stringify(SOME_JSON, function(err, jsonstr) {
   if(err) return callback(err, null);
 
   doAnotherAsyncOp(jsonstr, callback);
 });
-```
+{% endhighlight %}
 
 It also accepts all the regular arguments that can be passed to the *parse* and *stringify* functions which is an added bonus and pretty useful.

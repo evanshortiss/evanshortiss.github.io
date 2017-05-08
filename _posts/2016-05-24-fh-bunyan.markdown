@@ -26,7 +26,7 @@ These can even be reconfigured by using the _setLogMappings(map)_ function too,
 so if you don't like the defaults then that's fine! You could do the following
 to configure them to your liking:
 
-```js
+{% highlight javascript %}
 var bunyan = require('fh-bunyan');
 
 bunyan.setLogMappings({
@@ -40,7 +40,7 @@ var log = bunyan.getLogger(__filename);
 
 log.debug('debug level - only appears in dev due to our mappings!');
 log.info('info level - appears in dev, test, preprod, and prod!');
-```
+{% endhighlight %}
 
 Now you can write more code, and worry less about choosing a log library and
 configuring it across all of your Red Hat Mobile MBaaS environments!

@@ -10,7 +10,7 @@ As part of a project I was working on recently we needed to get a Cordova applic
 ## Download Process & Structure
 Due to some stringent security requirements we needed to generate a one-time download token for the PDF. This resulted in URLs with the following structure _/pdf/download/:unique-token_ which would invoke code that looked loosely like this:
 
-```javascript
+{% highlight javascript %}
 function getPdfRouteHandler (req, res, next) {
   pdfService.getPdf(req.params.token, function (err, data) {
     if (err) {
@@ -29,7 +29,7 @@ function getPdfRouteHandler (req, res, next) {
       }
   });
 }
-```
+{% endhighlight %}
 
 We ensured the PDF downloads were working for both iOS and Desktop first since those were a higher priority. Using the above code on the Node.js service, both iOS and Chrome were able to display the PDF successfully, but when Android's time came to shine things got pretty weird.
 
@@ -47,12 +47,12 @@ Since the protocol was ruled out at this point I thought maybe the way Android's
 
 Here are some examples, naturally we only ever tried one content type at a time:
 
-```javascript
+{% highlight javascript %}
 res.header('Content-Type' 'application/octet-stream');
 res.header('Content-Type' 'application/pdf');
 res.header('Content-Type' 'application/force-download');
 res.header('Content-Disposition' 'attachment; filename="filename.PDF"');
-```
+{% endhighlight %}
 
 ## The Solution
 After much frustration I thought that maybe none of the problems were with headers or protocols, but instead was something related to the Android Download manager. Looking at the download URL made me think "Well, the URL doesn't contain a file extension, so maybe when the Download Manager receives this it fails to recognise a filename". I added the .pdf to the URL and added support for this in the cloud code and to my surprise this fixed the issue.
