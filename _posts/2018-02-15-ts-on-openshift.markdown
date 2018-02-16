@@ -29,7 +29,7 @@ be helpful in following along, but isn't essential.
 
 
 ## Sample Code
-For the prupose of this blogpost we're going to use
+For the purpose of this blogpost we're going to use
 [this code on GitHub](https://github.com/evanshortiss/openshift-typescript-example),
 so go ahead and fork it to your own GitHub account to before going any further.
 We'll come back to it in subsequent sections of this post.
@@ -113,7 +113,7 @@ on OpenShift, but what did we *actually* do? How did all of this work?
 
 ![Confused GIF](http://www.reactiongifs.com/wp-content/uploads/2013/11/I-have-no-idea-what-I-am-doing.gif)
 
-Let's go over the concepts without getting into excesive detail:
+Let's go over the concepts without getting into excessive detail:
 
 1. We created a Project in OpenShift.
 2. We created an Application based on OpenShift's Node.js v6 source-to-image process within our Project. Strictly speaking we created an Image Stream, Deployment Config, Route, and the other resources that comprise an Application.
@@ -122,7 +122,7 @@ Let's go over the concepts without getting into excesive detail:
 5. Upon pushing the new image to its registry OpenShift triggered a new Deployment.
     * Each Application has a Deployment Config, or "dc" for short, can be configured to use different deployment strategies and different images.
     * Our Deployment is configured to watch our `ts-example` [Image Stream](https://docs.openshift.com/online/dev_guide/managing_images.html). Whenever a new image is pushed to this stream a deployment occurs automatically.
-    * By default the Deployment is a "Rolling" type. This means OpenShift created a new Pod with a running instance of our application container before shutting down any previosuly running instances. Since this was our first deployment we had no previous versions of our application deployed, but if we had then the rolling deployment would have ensured there was no downtime as a result of the deployment - pretty neat, right? You can read about Pods and Services [here](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/pods_and_services.html).
+    * By default the Deployment is a "Rolling" type. This means OpenShift created a new Pod with a running instance of our application container before shutting down any previously running instances. Since this was our first deployment we had no previous versions of our application deployed, but if we had then the rolling deployment would have ensured there was no downtime as a result of the deployment - pretty neat, right? You can read about Pods and Services [here](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/pods_and_services.html).
 7. An entry in the Router was created for our project.
     * Router entries provide an ingress point for HTTP requests.
     * When a request is received Router will determine which application, if any, that the request should be routed to.
@@ -158,7 +158,7 @@ the command [here](https://docs.npmjs.com/cli/start). Our sample application has
 the `start` entry set to `"node server.js | pino"`. This will start our
 program and pipe output to `pino` so our logs are printed in a prettier format.
 You'll also notice we have a `postinstall` script; this is super important since
-it will compile our TypeScript files to JavaScript by exectuing `tsc` after the
+it will compile our TypeScript files to JavaScript by executing `tsc` after the
 s2i process has run `npm install` for us and ultimately package our compiled
 JavaScript into the created image.
 
@@ -240,7 +240,7 @@ that a new build started a "few seconds ago" like so.
 
 ![Webhook Trigger Result](/res/img/posts/2018-01-24-ts-on-openshift/webhook-post-push.png)
 
-When you click the build number you can view the build infromation. You can see
+When you click the build number you can view the build information. You can see
 that the screen shot below states that my build was triggered by a webhook. It
 also shows the commit message and hash.
 
