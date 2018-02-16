@@ -22,11 +22,11 @@ Eventually I figured maybe there was some conflict in term of the timer types in
 node.js vs. browser JavaScript so I tried the following:
 
 
-{% highlight typescript %}
+```bash
 let timer:NodeJS.Timer;
 
 timer = global.setTimeout(myFunction, 1000);
-{% endhighlight %}
+```
 
 By specifying `global.setTimeout` (the equivalent of `window`, in node.js) all
 was cleared up and the TypeScript compiler was happy once again.

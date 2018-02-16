@@ -49,7 +49,10 @@ img {
     vertical-align: middle;
 }
 
-
+.post-content img {
+    min-width: 80%;
+    padding: 1em 0;
+}
 
 /**
  * Figures
@@ -95,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: $brand-color;
     text-decoration: none;
-
+    font-weight: 400;
     &:visited {
         color: darken($brand-color, 15%);
     }

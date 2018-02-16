@@ -20,9 +20,9 @@ var MAX_BATCH_SIZE = process.env.MAX_BATCH_SIZE;
 If we run this program as shown below, then it would receive a String with the
 value of the MAX_BATCH_SIZE environment variable.
 
-{% highlight bash %}
-MAX_BATCH_SIZE=10 node my-program.js
-{% endhighlight %}
+```
+$ MAX_BATCH_SIZE=10 node my-program.js
+```
 
 This is pretty simple stuff at a high-level, but is imperfect when it comes
 to unit testing, verifying variables are set, and ensuring they are set

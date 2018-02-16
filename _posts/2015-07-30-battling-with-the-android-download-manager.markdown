@@ -26,7 +26,7 @@ function getPdfRouteHandler (req, res, next) {
       res.header('Content-Type', 'application/pdf');
       res.write(buf);
       res.end();
-      }
+    }
   });
 }
 {% endhighlight %}
@@ -37,7 +37,6 @@ We ensured the PDF downloads were working for both iOS and Desktop first since t
 When we opened the PDF download URL on Android the browser would wait while the Node.js service initiated the request, performed authentication etc. and then began streaming back the PDF data. Once the PDF data began to be streamed back the Android browser would hand the download to the Download Manager. This background download would consistently fail and this was causing a major headache.
 
 ## Angles of Investigation
-<br>
 
 #### HTTPS vs HTTP
 Initially I found many results online claiming that Android PDF downloads over HTTPS were consistently failing. Considering I was testing with Android 4.4 I found it hard to believe this was still an issue. After performing a quick test over HTTP I confirmed this wasn't the cause of issue since HTTP and HTTPS both produced the same result.
@@ -55,11 +54,11 @@ res.header('Content-Disposition' 'attachment; filename="filename.PDF"');
 {% endhighlight %}
 
 ## The Solution
-After much frustration I thought that maybe none of the problems were with headers or protocols, but instead was something related to the Android Download manager. Looking at the download URL made me think "Well, the URL doesn't contain a file extension, so maybe when the Download Manager receives this it fails to recognise a filename". I added the .pdf to the URL and added support for this in the cloud code and to my surprise this fixed the issue.
+After much frustration I thought that maybe none of the problems were with headers or protocols, but instead was something related to the Android Download manager. Looking at the download URL made me think "Well, the URL doesn't contain a file extension, so maybe when the Download Manager receives this it fails to recognise a filename". I added the .pdf to the URL and added support for this in the Node.js code and to my surprise this fixed the issue.
 
 So, given the below example URLs only the second works:
 
 1. _/pdf/download/5e0c4346-e228-49c2-99a6-78475052eb9e_
 2. _/pdf/download/5e0c4346-e228-49c2-99a6-78475052eb9e.pdf_
 
-Oddly enough, I couldn't recreate this issue locally using a basic express HTTP server running the same code snippet which leads me to believe it may somehow be linked an error in the Android Download Manager process when downloading over HTTPS or running code behind a proxy or load balancer. I might update this in teh future with more thorough results and check for logs from logcat when I reproduce the failing downloads in a sandbox running on the same host.
+Oddly enough, I couldn't recreate this issue locally using a basic express HTTP server running the same code snippet which leads me to believe it may somehow be linked an error in the Android Download Manager process when downloading over HTTPS or running code behind a proxy or load balancer. I might update this in the future with more thorough results and check for logs from logcat when I reproduce the failing downloads in a sandbox running on the same host.
