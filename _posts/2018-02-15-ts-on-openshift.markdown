@@ -72,7 +72,7 @@ and we'll discuss it in more detail below. It should reflect that node modules
 are being installed using npm, then it will push the generated image to the
 internal OpenShift registry with logs like so at the end of the build:
 
-```
+```bash
 Pushing image 172.30.17.124:5000/your-project-name/ts-example:latest ...
 Pushed 0/6 layers, 1% complete
 Pushed 1/6 layers, 23% complete
@@ -212,7 +212,7 @@ phrase "Dia dhuit".
 
 The route in `server.ts` should look something like this now:
 
-```
+```javascript
 app.get('/', (req, res) => {
   const name = req.query.name || 'World'
 
@@ -229,7 +229,7 @@ app.get('/', (req, res) => {
 
 Once you've done this commit and push the new code:
 
-```
+```bash
 $ git add .
 $ git commit -m "change greeting to use irish phrase"
 $ git push origin master

@@ -16,6 +16,6 @@ github_username:  evanshortiss
 
 # Build settings
 markdown: kramdown
-
+highlighter: rouge
 gems:
   - octopress-autoprefixer
