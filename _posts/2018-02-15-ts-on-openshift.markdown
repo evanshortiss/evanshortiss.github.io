@@ -11,27 +11,27 @@ how I deployed it so you can learn to do the same!
 
 If you're not familiar with OpenShift then a quick
 TLDR; summary is that it can be thought of as a PaaS based on Kubernetes and
-Docker technologies that enables application developers and enterprises to
+Linux Container technologies that enables application developers and enterprises to
 easily deploy and scale modern application architectures. You should check out
 the [OpenShift website](https://www.openshift.com/) if you'd like to know more.
 
 This post is aimed at application developers and covers the concepts of using
 OpenShift from that perspective. If you're looking for a deeper dive into
-OpenShift's architecture and the Docker and Kubernetes technologies this isn't
+OpenShift's architecture and containers and Kubernetes technologies this isn't
 the blogpost you're looking for.
 
 ![Not the post you're looking for](https://media.giphy.com/media/3o84sF21zQYacFcl68/giphy.gif)
 
 Here you'll find a guide and high-level explanation that will get you
 kickstarted on your journey to using these technologies to deploy awesome
-applications using containers. Basic knowledge of Docker and containers will
-be helpful in following along, but isn't essential.
+applications using containers. Basic knowledge of containers, specifically
+Docker, will be helpful in following along, but isn't essential.
 
 
 ## Sample Code
 For the purpose of this blogpost we're going to use
 [this code on GitHub](https://github.com/evanshortiss/openshift-typescript-example),
-so go ahead and fork it to your own GitHub account to before going any further.
+so go ahead and fork it to your own GitHub account before going any further.
 We'll come back to it in subsequent sections of this post.
 
 
