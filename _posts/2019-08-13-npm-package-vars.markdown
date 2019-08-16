@@ -32,9 +32,10 @@ and easy way to list them is to add something like the following to your
 "list-vars": "echo $(env) | tr ' ' '\n' | grep -i 'npm_'"
 ```
 
-_Note: This is not a perfect script, it splits on spaces so it won't work perfect on fields such as `author` in a *package.json*, but it's good enough to get the point across._
+_Note: This is not a perfect script, and is only tested on macOS. It splits on spaces so it won't work on fields such as `author` since that will typically contain spaces, but it's good enough to get the point across!_
 
-Here's a sample of the variables this printed on my machine:
+The output below shows a subset of the variables this printed on my machine.
+Some of these could be really useful in your scripts!
 
 ```
 npm_package_license=MIT
