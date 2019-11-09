@@ -14,12 +14,12 @@ instructions are not applicable.
 
 ## Flashing an OS Image
 
-. Download a Raspbian image from [raspberrypi.org/downloads/raspbian/](https://www.raspberrypi.org/downloads/raspbian/).
-. Download [balenaEtcher](https://www.balena.io/etcher/).
-. Use balenaEtcher to load the image onto a microSD.
-. Wait until balenaEtcheris finished.
-. Eject the microSD from your PC or Laptop.
-. Plug the microSD into the Raspberry Pi and boot it up.
+1. Download a Raspbian image from [raspberrypi.org/downloads/raspbian/](https://www.raspberrypi.org/downloads/raspbian/).
+1. Download [balenaEtcher](https://www.balena.io/etcher/).
+1. Use balenaEtcher to load the image onto a microSD.
+1. Wait until balenaEtcheris finished.
+1. Eject the microSD from your PC or Laptop.
+1. Plug the microSD into the Raspberry Pi and boot it up.
 
 _Note: balenaEtcher is not strictly necessary but it's nice and easy._
 
@@ -29,21 +29,24 @@ _Note: balenaEtcher is not strictly necessary but it's nice and easy._
 I might revisit this with steps to create a new user and delete the default
 `pi` user, but will leave it as is for now.
 
-. Wait until the Pi finishes booting and prompts for a login.
-. Enter the username `pi`.
-. Enter the password `raspberry`.
-. Run the `passwd` command once logged in and follow the prompts to create a new password.
+1. Wait until the Pi finishes booting and prompts for a login.
+1. Enter the username `pi`.
+1. Enter the password `raspberry`.
+1. Run the `passwd` command once logged in and follow the prompts to create a new password.
 
 
 ## Configure Internationalisation and Keyboard Layout
 
-. Enter the `sudo raspi-config` command.
-. Choose _Localisation Options => Change Locale_ and set as required.
-. Choose _Localisation Options => Change Locale_:
-. Find your keyboard and select it.
-  . If your Keyboard was not listed exit `raspi-config` using the `Esc` key.
-  . Enter `sudo vi /etc/default/keyboard`.
-  . Change the `XKBLAYOUT` to a valid code, e.g `us` or `ie`.
+1. Enter the `sudo raspi-config` command.
+1. Choose _Localisation Options => Change Locale_ and set as required.
+1. Choose _Localisation Options => Change Locale_:
+1. Find your keyboard and select it.
+
+If your keyboard was not listed try this instead:
+
+1. Exit `raspi-config` using the `Esc` key.
+1. Enter `sudo vi /etc/default/keyboard`.
+1. Change the `XKBLAYOUT` to a valid code, e.g `us` or `ie`.
 
 ## Configure WiFi
 
@@ -51,25 +54,25 @@ I use a WiFi dongle to perform initial software installs and configuration
 since it's easier. The WiFi adapter I use is the 
 [OURLiNK from adafruit](https://www.adafruit.com/product/1012)).
 
-. Enter the `sudo raspi-config` command.
-. Choose _Network Options_.
-. Select _N2 Wi-fi_.
-. Enter the network SSID.
-. Enter the network password.
-. Exit `raspi-config` using the `Esc` key.
-. Test connectivity by issuing a command, e.g `curl https://whatsmyip.dev/api/ip`.
+1. Enter the `sudo raspi-config` command.
+1. Choose _Network Options_.
+1. Select _N2 Wi-fi_.
+1. Enter the network SSID.
+1. Enter the network password.
+1. Exit `raspi-config` using the `Esc` key.
+1. Test connectivity by issuing a command, e.g `curl https://whatsmyip.dev/api/ip`.
 
 ## Enable SSH Access
 
-. Enter the `sudo raspi-config` command.
-. Select _Interfacing Options => P2 SSH_.
-. Choose `Yes` when asked if you'd like SSH server to be enabled.
+1. Enter the `sudo raspi-config` command.
+1. Select _Interfacing Options => P2 SSH_.
+1. Choose `Yes` when asked if you'd like SSH server to be enabled.
 
 ## Add a Little Security
 
-. Run `sudo apt-get update` and `sudo apt-get install fail2ban`.
-. Enter `y` when prompted to perform the install.
-. Run `sudo vi /etc/fail2ban/jail.local` and paste content similar to the
+1. Run `sudo apt-get update` and `sudo apt-get install fail2ban`.
+1. Enter `y` when prompted to perform the install.
+1. Run `sudo vi /etc/fail2ban/jail.local` and paste content similar to the
 example below then run `sudo service fail2ban restart`:
 
 ```
@@ -93,14 +96,14 @@ with a value such as `192.168.x.x`.
 
 Using a Laptop/PC on the same network as your Pi try the following:
 
-. Open a terminal.
-. Enter `ssh pi@192.168.x.x`.
-. When prompted to continue connecting enter `yes`.
-. Enter the password for the `pi` user when prompted.
-. Run the commands `cat /var/log/auth.log` and `cat /var/log/fail2ban.log`.
-. Verify that the output from the `cat` commands above show your SSH activity.
-. Type `exit` to quit the SSH session.
-. Enter `ssh pi@192.168.x.x`, but enter the wrong password a few times. You'll get banned!
+1. Open a terminal.
+1. Enter `ssh pi@192.168.x.x`.
+1. When prompted to continue connecting enter `yes`.
+1. Enter the password for the `pi` user when prompted.
+1. Run the commands `cat /var/log/auth.log` and `cat /var/log/fail2ban.log`.
+1. Verify that the output from the `cat` commands above show your SSH activity.
+1. Type `exit` to quit the SSH session.
+1. Enter `ssh pi@192.168.x.x`, but enter the wrong password a few times. You'll get banned!
 
 Switch to your Pi and check `/var/log/fail2ban.log` to verify there's an
 `[ssh] Ban 192.168.x.x` entry. You can unban your PC/Laptop from the Pi

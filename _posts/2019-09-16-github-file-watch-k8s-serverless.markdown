@@ -2,6 +2,7 @@
 published: true
 title: Monitor GitHub Files using Lambda or Kubernetes & SendGrid
 layout: post
+published: false
 ---
 
 Recently, I needed to be notified when changes were made to a specific file in
