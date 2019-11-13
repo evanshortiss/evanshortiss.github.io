@@ -6,11 +6,12 @@ categories: raspberry-pi
 ---
 
 This blog post is more so a list of reminders for myself than anything else,
-but if you find it helpful then that's great too! 
+but it will be helpful for anyone setting up their Raspberry Pi too. I did all
+of this on a Raspberry Pi 2 Model B.
 
-Note that the blog post assumes you'll be using a variant of the Raspbian OS.
-If you're using Fedora, Ubuntu, or another distro then most of these
-instructions are not applicable.
+_Note: This blog post assumes you'll be using a variant of the Raspbian OS. If
+you're using Fedora, Ubuntu, or another distro then some of these instructions
+aren't valid (`raspi-config` will not be available for example) so YMMV._
 
 ## Flashing an OS Image
 
@@ -19,9 +20,10 @@ instructions are not applicable.
 1. Use balenaEtcher to load the image onto a microSD.
 1. Wait until balenaEtcheris finished.
 1. Eject the microSD from your PC or Laptop.
-1. Plug the microSD into the Raspberry Pi and boot it up.
+1. Plug the microSD into the Raspberry Pi and boot it up with a keyboard and
+monitor attached.
 
-_Note: balenaEtcher is not strictly necessary but it's nice and easy._
+_Note: balenaEtcher is not strictly necessary, but it's a nice and easy way to perform the flash._
 
 
 ## Initial Login and Password Change
@@ -39,24 +41,24 @@ I might revisit this with steps to create a new user and delete the default
 
 1. Enter the `sudo raspi-config` command.
 1. Choose _Localisation Options => Change Locale_ and set as required.
-1. Choose _Localisation Options => Change Locale_:
-1. Find your keyboard and select it.
+1. Choose _Localisation Options => Change Keyboard_ and choose your keyboard.
 
 If your keyboard was not listed try this instead:
 
 1. Exit `raspi-config` using the `Esc` key.
 1. Enter `sudo vi /etc/default/keyboard`.
-1. Change the `XKBLAYOUT` to a valid code, e.g `us` or `ie`.
+1. Change the value of `XKBLAYOUT` to a valid code, e.g `us`.
 
 ## Configure WiFi
 
-I use a WiFi dongle to perform initial software installs and configuration
+I used a WiFi dongle to perform initial software installs and configuration
 since it's easier. The WiFi adapter I use is the 
-[OURLiNK from adafruit](https://www.adafruit.com/product/1012)).
+[OURLiNK from adafruit](https://www.adafruit.com/product/1012)) - it's slow,
+but it gets the job done when you need a wireless option.
 
 1. Enter the `sudo raspi-config` command.
 1. Choose _Network Options_.
-1. Select _N2 Wi-fi_.
+1. Select the _N2 Wi-fi_ option.
 1. Enter the network SSID.
 1. Enter the network password.
 1. Exit `raspi-config` using the `Esc` key.
@@ -68,7 +70,7 @@ since it's easier. The WiFi adapter I use is the
 1. Select _Interfacing Options => P2 SSH_.
 1. Choose `Yes` when asked if you'd like SSH server to be enabled.
 
-## Add a Little Security
+## Add a Little Extra Security
 
 1. Run `sudo apt-get update` and `sudo apt-get install fail2ban`.
 1. Enter `y` when prompted to perform the install.
