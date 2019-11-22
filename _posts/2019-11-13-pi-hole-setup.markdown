@@ -5,7 +5,7 @@ layout: post
 categories: raspberry-pi
 ---
 
-My [previous blog post](raspberry-pi/2019/11/08/raspberry-pi-setup.html)
+My [previous blog post](/raspberry-pi/2019/11/08/raspberry-pi-setup.html)
 detailed the steps I used to resurrect my neglected Raspberry Pi. In this
 blog post I'm going to cover how I setup [Pi-hole](https://pi-hole.net/)
 for my home network.
@@ -151,10 +151,10 @@ _Note: If `nslookup` is not available run `sudo apt-get install dnsutils_
 
 Notice how my Pi's IP address is listed as the DNS server being used.
 
-## Adding Block/White Lists via the Admin Panel
+## Adding Blocklists via the Admin Panel
 
-This final step is optional, but adding more blocklists makes sense since the
-whole point of the Pi-hole is to block tracking, intrusive adverts, etc.
+This final step is optional, but why the hell would you not want to beef up
+your defenses? 
 
 1. Navigate to the IP Address of your Pi-hole in a web browser that's connected
 to the same network and visit the admin route, e.g `192.168.0.29/admin`.
@@ -162,7 +162,7 @@ to the same network and visit the admin route, e.g `192.168.0.29/admin`.
 started Pi-hole.
 1. Select the _Settings_ on the left after logging in.
 1. Navigate to the _Blocklists_ tab.
-1. Copy the lists you'd like from [firebog.net](https://firebog.net) into the textbox.
+1. Copy the lists you'd like from [firebog.net](https://firebog.net) into the textbox. Personally I added all of them and whitelist anything I run into issues with.
 1. Click _Save and Update_
 
 Over time you will be able to use the Pi-hole admin _Dashboard_ screen to see
