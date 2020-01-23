@@ -175,8 +175,11 @@ so others can easily use it. If you frequently switch between registries give
 it a try like so:
 
 ```bash
+# install npmrcd
+npm install -g npmrcd
+
 # create a work profile with the following settings
-npx npmrcd --registry=https://repository.acme.com/nexus/repository/registry.npmjs.org
+npmrcd --registry=https://repository.acme.com/nexus/repository/registry.npmjs.org
 ```
 
 If you need to use a CA file that option is supported. The CA file can point to
@@ -184,7 +187,7 @@ a local file or HTTP/HTTPS endpoint that the file can be fetched from:
 
 ```bash
 # create a work profile with the following settings
-npx npmrcd \
+npmrcd \
 --cafile=~/REGISTRY-CA.crt
 --registry=https://repository.acme.com/nexus/repository/registry.npmjs.org
 ```
@@ -195,7 +198,7 @@ if the registry is not accessible:
 ```bash
 # even if the registry url does not resolve, switch if connected to
 # the "Red Hat Guest" WiFi to prevent using the public registry
-npx npmrcd \
+npmrcd \
 --triggerssid='Red Hat Guest'
 --cafile=~/REGISTRY-CA.crt
 --registry=https://repository.acme.com/nexus/repository/registry.npmjs.org
