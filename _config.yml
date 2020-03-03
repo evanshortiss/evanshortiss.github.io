@@ -10,7 +10,7 @@ title: Evan Shortiss
 email: evanshortiss@gmail.com
 description: I'm Evan, a developer working at Red Hat Mobile. I like to write code, write about code, take photographs, and play video games when life allows. Opinions expressed on this site are my own.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://evanshortiss.com" # the base hostname & protocol for your site
+url: "https://evanshortiss.com" # the base hostname & protocol for your site
 twitter_username: evanshortiss
 github_username:  evanshortiss
 

@@ -17,8 +17,6 @@ Using CommonJS design patterns and one of my favourite tools, Browserify, makes 
 * [fhlog](https://github.com/evanshortiss/fhlog) - Logger with a consistent interface on client and cloud.
 * [safejson](https://github.com/evanshortiss/safejson) - Safely parse JSON via callbacks
 
-Or see how I've already discussed Browserify and how it can be used in larger client-side projects [here](http://blog.evanshortiss.com/a-hybrid-application-workflow/).
-
 # Benefits
 So how does this sharing really benefit you?
 

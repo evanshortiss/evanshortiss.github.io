@@ -54,7 +54,7 @@ Once the URL generation and gallery logic was out of the way I needed to decide 
 
 Users can also supply a _renderer_ object to the middleware with a _classNames_ property. Doing so will allow custom classes be added for container, row and column element types for added layout flexibilty, and to support a responsive UI.
 
-It might also be useful to expand the API in the future to allow it to return the HTML programmatically without defaulting to using the _res.render_ function on behalf of users, but for now it's working well on my own site at [evanshortiss.com/photography](http://evanshortiss.com/photography)
+It might also be useful to expand the API in the future to allow it to return the HTML programmatically without defaulting to using the _res.render_ function on behalf of users ~~, but for now it's working well on my own site at [evanshortiss.com/photography](https://evanshortiss.com/photography)~~.
 
 Here's an example of how the module can be added to an Express app. You can load the middleware synchrnously by not providing a callback, but it is not recommended since if the initialisation fails your gallery will not be served as expected.
 
@@ -117,4 +117,4 @@ If you'd like to check out either module here are links to their source. They ca
 * [flickr-urls](https://github.com/evanshortiss/flickr-urls)
 
 ### Example
-![](/res/img/posts/2015-06-23-creating-express-middleware-for-flickr/Screen%20Shot%202016-04-13%20at%209.12.07%20PM.png)
+![](/res/img/posts/2015-06-23-creating-express-middleware-for-flickr/website-screenshot.png)
