@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-I'm Evan, a developer working at Red Hat Mobile. I like to write code, write about code, take photographs, and play video games when life allows. Most of the content here will be related to Cordova, Node.js, personal projects, Red Hat Mobile and JavaScript-y stuff!
+I'm Evan, a software developer working at Red Hat. I enjoy writing code, writing *about* code, photography, and playing competitive FPS and other video games when life allows. Opinions expressed on this site are my own.
