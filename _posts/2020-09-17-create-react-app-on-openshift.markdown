@@ -22,7 +22,7 @@ originally authored by the folks at [jshmrtn](https://github.com/jshmrtn/s2i-nod
 
 Using this method allows you to deploy code that's stored in a Git repository,
 or to upload your local codebase directly to a [Build](https://docs.openshift.com/container-platform/3.9/dev_guide/builds/index.html)
-running on OpenShift.
+running on OpenShift. Both approaches are covered below.
 
 ## Requirements
 
@@ -31,9 +31,11 @@ running on OpenShift.
 * Node.js v12 or newer
 * GitHub Account (optional)
 
-## OpenShift Build Magic with Git Integration
+## Git Method
 
-_NOTE: If you'd rather push code to OpenShift without Git, skip to the next section._
+_Note: I'm going to assume you're starting from scratch, but if you have an existing
+repository with a React application that was generated via Create React App or
+that uses `react-scripts` you can skip to the bash script below._
 
 To use this approach head over to [github.com/new](https://github.com/new, _blank)
 and do the following:
@@ -49,6 +51,8 @@ web application hosted by NGINX on OpenShift.
 # The builder image is used by OpenShift to build the application
 export BUILDER_IMAGE="quay.io/evanshortiss/s2i-nodejs-nginx"
 export APPLICATION_NAME="cra-application"
+
+# REPLACE THIS WITH YOUR REPOSITORY URL
 export GIT_REPO="https://github.com/yourusername/your-react-app-repo"
 
 # Create a React application template using CRA, and push to
@@ -85,7 +89,7 @@ To deploy future changes run oc `oc start-build $APPLICATION_NAME`. You could
 also set up a [Build Trigger](https://docs.openshift.com/container-platform/4.5/builds/triggering-builds-build-hooks.html#builds-triggers_triggering-builds-build-hooks)
 to automate builds using a Git hook.
 
-## Git-less OpenShift Build Magic
+## Git-less Method
 
 If you'd rather develop locally and upload the application assets for builds,
 then give this binary build solution a try.
