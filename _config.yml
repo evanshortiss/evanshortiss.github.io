@@ -13,6 +13,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://evanshortiss.com" # the base hostname & protocol for your site
 twitter_username: evanshortiss
 github_username:  evanshortiss
+encoding: utf-8
 
 # Build settings
 markdown: kramdown
