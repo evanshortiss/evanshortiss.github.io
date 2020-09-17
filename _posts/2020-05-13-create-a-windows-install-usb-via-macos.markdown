@@ -9,11 +9,11 @@ You'd think creating a USB-based installer for Windows 10 would be easy using
 macOS, or any modern operating system, but my experience following the guides
 that Google returns for macOS wasn't great. Most guides are either outdated or
 contain what appear to be errors in the Terminal commands, so the steps below
-are what I used to create a working Windows 10 64-Bit USB installer.
+are what I used to create a working Windows 10 64-Bit USB installer in 2020.
 
 This guide is mostly based on the one by Quincy Larson on
-[freecodecamp.org](https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/)
-, but it contains modifications that I found necessary in my experience.
+[freecodecamp.org](https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/),
+but it contains modifications that I found necessary to get it working.
 
 
 ### Open a Terminal
@@ -30,8 +30,8 @@ install it:
 ```
 
 Once you have Homebrew installed, quit the Terminal application (the shortcut
-is CMD + Q), then reopen it. Next install wimlib by running
-`brew install wimlib`.
+is CMD + Q), then reopen it. Install wimlib by running `brew install wimlib` in
+the new Terminal you just opened.
 
 ### Download Windows
 Download a Windows 10 ISO. You can do so at this link on [microsoft.com](https://www.microsoft.com/en-us/software-download/windows10ISO).
