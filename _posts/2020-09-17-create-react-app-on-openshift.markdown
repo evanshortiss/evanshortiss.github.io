@@ -105,7 +105,7 @@ npx create-react-app $APPLICATION_NAME
 oc new-project webapp
 
 # Create a new BuildConfig on OpenShift based on the Node.js & NGINX builder
-# --binary:     Indicates we'll trigger builds by passing uploading assets
+# --binary:     Indicates we'll trigger builds by uploading assets directly
 # --to:         The name for the output container image
 # --build-env   Environment variable indicating where the builder image should
 #               look for the bundled web application. This is the result of
