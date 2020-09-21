@@ -3,6 +3,8 @@ published: true
 title: Automatic npm Registry Switching (npmrc daemon)
 layout: post
 categories: nodejs
+redirect_from:
+  - /nodejs/2019/12/08/npmrc-daemon.html
 ---
 
 *TLDR; My [npmrcd](https://github.com/evanshortiss/npmrc-daemon) package allows

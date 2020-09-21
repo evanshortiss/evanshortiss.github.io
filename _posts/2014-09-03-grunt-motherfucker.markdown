@@ -3,6 +3,8 @@ published: true
 title: Grunt, motherfucker! Do you need it?
 layout: post
 categories: development javascript
+redirect_from:
+  - /development/javascript/2014/09/03/grunt-motherfucker.html
 ---
 
 Lately Node.js task runners have been really kicking up a storm. Grunt, Gulp, and Broccoli are all providing slightly different approaches to performing similar tasks.

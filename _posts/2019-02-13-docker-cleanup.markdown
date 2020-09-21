@@ -3,6 +3,8 @@ published: true
 title: Docker House Keeping
 layout: post
 categories: development containers docker
+redirect_from:
+    - /development/containers/docker/2019/02/13/docker-cleanup.html
 ---
 
 When running large projects that rely on multiple containers I sometimes run into issues with image versions or old images being cached This results in "it works on my machine" issues that a `docker pull` or similar commands usually can't fix.

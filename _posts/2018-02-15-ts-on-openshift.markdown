@@ -3,6 +3,8 @@ published: true
 title: Deploying TypeScript Applications on OpenShift Online
 layout: post
 categories: development openshift javascript typescript
+redirect_from:
+    - /development/openshift/javascript/typescript/2018/02/15/ts-on-openshift.html
 ---
 
 Recently I wrote a Node.js application using TypeScript and ended up deploying

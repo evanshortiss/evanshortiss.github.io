@@ -3,6 +3,8 @@ published: true
 title: Sharable JavaScript Modules
 layout: post
 categories: development javascript
+redirect_from:
+  - /development/javascript/2014/09/18/sharable-javascript-modules.html
 ---
 
 

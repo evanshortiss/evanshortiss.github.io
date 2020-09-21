@@ -3,6 +3,8 @@ published: true
 title: Better Caching for Express Applications
 layout: post
 categories: development javascript nodejs
+redirect_from:
+    - /development/javascript/nodejs/2016/07/07/better-caching-for-express.html
 ---
 
 ### node.js is awesome

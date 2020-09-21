@@ -3,6 +3,8 @@ published: true
 title: CodeReady Workspaces Preview URL Setup
 layout: post
 categories: development
+redirect_from:
+    - /development/2019/08/09/codeready-preview-urls.html
 ---
 
 Recently I've had the opportunity to work with Red Hat's CodeReady Workspaces

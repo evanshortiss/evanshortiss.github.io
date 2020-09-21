@@ -3,6 +3,8 @@ published: true
 title: Prettify Logs using FHC and Bunyan
 layout: post
 categories: development rhmap
+redirect_from:
+    - /development/rhmap/2016/05/25/pretty-print-logs-using-fhc.html
 ---
 
 *This post assumes you have a Red Hat Mobile Platform instance. You can sign up

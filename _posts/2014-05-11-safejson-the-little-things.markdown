@@ -3,6 +3,8 @@ published: true
 title: safejson - It's the little things in life!
 layout: post
 categories: development javascript
+redirect_from:
+  - /development/javascript/2014/05/11/safejson-the-little-things.html
 ---
 
 Humans. We're lazy. We also like things to be aesthetically pleasing. OK, Maybe that's just me.

@@ -3,6 +3,8 @@ published: true
 title: Node-ifying the HTML5/Cordova FileSystem API
 layout: post
 categories: development javascript
+redirect_from:
+  - /development/javascript/2014/12/30/nodeifying-html5-filesytem.html
 ---
 
 

@@ -3,6 +3,8 @@ published: true
 title: Working with Environment Variables in node.js
 layout: post
 categories: development nodejs
+redirect_from:
+    - /development/nodejs/2016/07/28/better-environment-variables-in-nodejs.html
 ---
 
 TLDR; Reading environment variables, asserting their values, and parsing them

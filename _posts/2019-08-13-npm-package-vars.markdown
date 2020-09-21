@@ -3,6 +3,8 @@ published: true
 title: npm script variables
 layout: post
 categories: development nodejs
+redirect_from:
+    - /development/nodejs/2019/08/13/npm-package-vars.html
 ---
 
 Recently I learned about the [package.json vars](https://docs.npmjs.com/misc/scripts#packagejson-vars) feature of npm scripts.

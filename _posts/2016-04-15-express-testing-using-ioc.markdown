@@ -3,6 +3,8 @@ published: true
 title: Unit Testing Express Routers
 layout: post
 categories: development javascript
+redirect_from:
+  - /development/javascript/2016/04/15/express-testing-using-ioc.html
 ---
 
 *All code contained in this post is available [here](https://github.com/evanshortiss/express-testing-blogpost), with a more complex example available [here](https://github.com/evanshortiss/rhmap-express-template).*

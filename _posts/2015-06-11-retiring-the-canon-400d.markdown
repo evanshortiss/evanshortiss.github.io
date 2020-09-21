@@ -3,6 +3,8 @@ published: true
 title: Retiring the Canon 400D / Rebel XTi / Kiss X
 layout: post
 categories: photography
+redirect_from:
+  - /photography/2015/06/11/retiring-the-canon-400d.html
 ---
 
 Ever since my mid-teens I've had an interest in photography, fascinated by the ability to play with light, create representations of the world that appear unnatural, and capture sights that are invisible to us as humans.

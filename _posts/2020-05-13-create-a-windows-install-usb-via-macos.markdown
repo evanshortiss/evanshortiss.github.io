@@ -3,6 +3,8 @@ published: true
 title: Creating a Windows 10 USB Installer using macOS in 2020
 layout: post
 categories: windows
+redirect_from:
+  - /windows/2020/05/13/create-a-windows-install-usb-via-macos.html
 ---
 
 You'd think creating a USB-based installer for Windows 10 would be easy using

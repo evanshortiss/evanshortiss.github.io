@@ -3,6 +3,8 @@ published: true
 title: Timers in TypeScript and Node.js
 layout: post
 categories: development nodejs typescript
+redirect_from:
+    - /development/nodejs/typescript/2016/11/16/timers-in-typescript.html
 ---
 
 TLDR; Use `global.setTimeout` instead of `setTimeout`

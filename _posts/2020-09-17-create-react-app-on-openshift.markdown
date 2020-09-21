@@ -3,6 +3,8 @@ published: true
 title: Create React App on OpenShift
 layout: post
 categories: development openshift react
+redirect_from:
+  - /development/openshift/react/2020/09/17/create-react-app-on-openshift.html
 ---
 
 [Create React App](https://create-react-app.dev/) is described as "the best way

@@ -3,9 +3,11 @@ published: true
 title: Creating Express Middleware for flickr
 layout: post
 categories: development javascript photography
+redirect_from:
+  - /development/javascript/photography/2015/06/23/creating-express-middleware-for-flickr.html
 ---
 
-_Note: My website is no longer running this since I've moved to Jekyll. Screenshots at the conclusion of this post show what can be achived by using this module._
+_Note: My website is no longer running this since I've moved to Jekyll. Screenshots at the conclusion of this post show what can be achieved by using this module._
 
 TLDR; I created an Express middleware ([express-flickr-gallery](https://github.com/evanshortiss/express-flickr-gallery/)) that makes it easy to create a gallery in your Express app using your images from flickr.
 

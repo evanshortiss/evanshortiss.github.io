@@ -3,6 +3,8 @@ published: true
 title: Express API Validations - A Learning Exercise
 layout: post
 categories: development nodejs express
+redirect_from:
+    - /development/nodejs/express/2017/04/24/express-joi.html
 ---
 
 When building APIs using exciting technologies such as node.js, express, and NoSQL databases, it’s easy to overlook things that are often enforced when using more mature technologies.

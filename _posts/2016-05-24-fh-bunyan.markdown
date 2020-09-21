@@ -3,6 +3,8 @@ published: true
 title: No-nonsense Logging on Red Hat Mobile
 layout: post
 categories: development rhmap
+redirect_from:
+  - /development/rhmap/2016/05/24/fh-bunyan.html
 ---
 
 On a recent customer engagement myself and Red Hat Mobile consultants needed to

@@ -3,6 +3,8 @@ published: true
 title: Raspberry Pi Quick Setup
 layout: post
 categories: raspberry-pi
+redirect_from:
+  - /raspberry-pi/2019/11/08/raspberry-pi-setup.html
 ---
 
 This blog post is more so a list of reminders for myself than anything else,

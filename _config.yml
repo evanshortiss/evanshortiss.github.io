@@ -14,9 +14,11 @@ url: "https://evanshortiss.com" # the base hostname & protocol for your site
 twitter_username: evanshortiss
 github_username:  evanshortiss
 encoding: utf-8
+permalink: /:title
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 plugins:
   - octopress-autoprefixer
+  - jekyll-redirect-from
