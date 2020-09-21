@@ -23,7 +23,14 @@ body {
     font-kerning: normal;
 }
 
-
+/**
+ * Center image captions
+ */
+.caption {
+    text-align: center;
+    font-style: italic;
+    margin: 25px;
+}
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
