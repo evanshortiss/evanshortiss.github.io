@@ -9,7 +9,7 @@ categories: development openshift
 
 This is a slightly customised version of Jason Dobies' post [on the Official OpenShift blog](https://www.openshift.com/blog/accessing-codeready-containers-on-a-remote-server/). That blog was inspired by Trevor McKay's GitHub Gist [found here](https://gist.github.com/tmckayus/8e843f90c44ac841d0673434c7de0c6a). That means I'm being incredibly derivative with this one, but I had fun and I hope you find it interesting!
 
-Like Jason, I sometimes want admin access to a full, but lightweight OpenShift development environment. Running [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview) on my Macbook works well, but it's not fun when Firefox, Chrome, Visual Studio Code are also in compettition for my 16 gigs of memory. I'd also rather my Macbook's fans didn't spin at 100% speed all the time.
+Like Jason, I sometimes want admin access to a full, but lightweight OpenShift development environment. Running [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview) on my Macbook works well, but it's not fun when Firefox, Chrome, Visual Studio Code are also in competition for my 16 gigs of memory. I'd also rather my Macbook's fans didn't spin at 100% speed all the time.
 
 I do have a gaming PC with plenty of power to run CodeReady Containers, but it only has a single 1TB drive with Windows 10 installed. Partitioning my drive, or running CodeReady Containers on Windows didn't sound like exciting prospects, and waiting for an SSD delivery would require patience, so I figured I'd try something else.
 
@@ -127,7 +127,7 @@ To start CodeReady Containers you need a "pull secret". This is found on [cloud.
 1. Paste your pull secret into a file, e.g `vi ~/crc-pull-secret.json` and paste the contents.
 1. `crc start -p ~/crc-pull-secret.json`
 
-CodeReady Containers takes a minute or two to start, so this is a good time to mindlesslessly browse Reddit or Twitter.
+CodeReady Containers takes a minute or two to start, so this is a good time to mindlessly browse Reddit or Twitter.
 
 ## Configure HAProxy
 
@@ -221,7 +221,7 @@ macOS Network settings to resolve the `testing` domain via dnsmasq, and 1.1.1.1 
 
 ## Revel in Your Success
 
-Once you have DNS configured you can navigate to [console-openshift-console.apps-crc.testing](https://console-openshift-console.apps-crc.testing/) in your web browser. You'll receive some very exciting SSL warnings. Yes, these are exciting becuase it means you've been successful!
+Once you have DNS configured, navigate to [console-openshift-console.apps-crc.testing](https://console-openshift-console.apps-crc.testing/) in your web browser. You'll receive some very exciting SSL warnings. Yes, these are exciting because it means you've been successful!
 
 ![](/res/img/posts/2020-09-21-code-ready-containers-on-digital-ocean/crc-ssl-warning.png)
 
