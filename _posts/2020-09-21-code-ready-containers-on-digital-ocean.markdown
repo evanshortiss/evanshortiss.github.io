@@ -32,7 +32,7 @@ Next, create a **Fedroa 32** Droplet in that project you just created. You'll wa
 * 8GB RAM (I've found it uses closer to 9GB)
 * 35 GB of disk space
 
-A Basic Droplet type with 8 vCPUs and 16GB RAM does the trick. This costs approximately 12 USD cents an hour, or 80 USD/month. [Professionals have standards](https://youtu.be/9NZDwZbyDus?t=68) (content warning: loud cartoon violence), so make sure you configure an SSH Key for authentication!
+A Basic Droplet type with 8 vCPUs and 16GB RAM does the trick. This costs approximately 12 USD cents an hour, or 80 USD/month. Even though this is a throwaway single node OpenShift cluster, make sure you configure an SSH Key for authentication, because [professionals have standards](https://youtu.be/9NZDwZbyDus?t=68) (warning: cartoon violence)!
 
 ![](/res/img/posts/2020-09-21-code-ready-containers-on-digital-ocean/do-setup-01.png)
 
