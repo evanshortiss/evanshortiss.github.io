@@ -3,6 +3,8 @@ published: true
 title: Pi-hole Ad Blocking Setup with Raspberri-Pi and Docker
 layout: post
 categories: raspberry-pi
+redirect_from:
+  - /raspberry-pi/2019/11/08/raspberry-pi-setup.html
 ---
 
 My [previous blog post](/raspberry-pi/2019/11/08/raspberry-pi-setup.html)
