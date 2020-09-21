@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-I'm Evan, a software developer working at Red Hat. I enjoy writing code, writing *about* code, photography, and playing competitive FPS and other video games when life allows. Opinions expressed on this site are my own.
+Evan Shortiss is a software developer who's passionate about developer and user experience. He spends his days hacking on OpenShift/Kubernetes, Mobile, Web, Kafka, and more at Red Hat. He spends his nights pretending to be a pro FPS player.
