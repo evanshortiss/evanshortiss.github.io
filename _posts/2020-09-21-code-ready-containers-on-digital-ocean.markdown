@@ -9,7 +9,7 @@ This is a slightly customised version of Jason Dobies' post [on the Official Ope
 
 Like Jason, I sometimes want admin access to a full, but lightweight OpenShift development environment. Running [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview) on my Macbook works well, but it's not fun when Firefox, Chrome, Visual Studio Code are also in competition for my 16 gigs of memory. I'd also rather my Macbook's fans didn't spin at 100% speed all the time.
 
-I do have a gaming PC with plenty of power to run CodeReady Containers, but it only has a single 1TB drive with Windows 10 installed. Partitioning my drive, or running CodeReady Containers on Windows didn't sound like exciting prospects, and waiting for an SSD delivery would require patience, so I figured I'd try something else.
+I have a gaming PC (look, I'd be fooling no one if I said it's primary purpose is productivity) that could easily run CodeReady Containers, but it only has a single 1TB drive with Windows 10 installed. Partitioning my drive, or running CodeReady Containers on Windows didn't sound like exciting prospects, and waiting for an SSD delivery would require patience, so I figured I'd try something else.
 
 This post outlines how I setup a DigitalOcean Droplet to run OpenShift 4 via CodeReady Containers, and how I configured my Macbook's DNS to communicate with it.
 
