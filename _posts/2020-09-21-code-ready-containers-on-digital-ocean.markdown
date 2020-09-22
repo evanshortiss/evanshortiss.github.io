@@ -65,7 +65,7 @@ _* and hopefully not an error in my instructions!_
 
 ## User Setup
 
-Once your Droplet finishes can SSH into it. Read this [DigitalOcean How-To](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/) for SSH if you're having trouble.
+SSH into your Droplet once it finishes provisioning. Read this [DigitalOcean How-To](https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/) for SSH if you're having trouble.
 
 CodeReady Containers should not be run as the root user, so the first thing to do is create another user, e.g `crc-user`.
 
