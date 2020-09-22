@@ -278,7 +278,7 @@ ssh crc-user@$DROPLET_IP
 eval $(crc oc-env)
 
 # Installs htpasswd, among other things
-sudo yum install httpd-tools
+sudo dnf install httpd-tools
 
 # Get the kubeadmin credentials 
 crc console --credentials
