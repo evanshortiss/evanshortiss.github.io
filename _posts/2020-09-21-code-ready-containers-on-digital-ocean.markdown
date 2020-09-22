@@ -35,7 +35,7 @@ A Basic Droplet type with 8 vCPUs and 16GB RAM does the trick. This costs approx
 ![](/res/img/posts/2020-09-21-code-ready-containers-on-digital-ocean/do-setup-01.png)
 
 {:.caption}
-The Droplet I chose has 8vCPUs and 16GB RAM. Noice!
+The Droplet I chose has 8vCPUs and 16GB RAM. Nice!
 
 While the Droplet is being created, head to the *Networking* section and click *Create Firewall* in the *Firewalls* section. Add the following rules:
 
