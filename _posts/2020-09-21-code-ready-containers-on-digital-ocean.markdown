@@ -15,7 +15,7 @@ This post outlines how I setup a DigitalOcean Droplet to run OpenShift 4 via Cod
 
 ## DigitalOcean Droplet Setup
 
-I'm going to assume you have a DigitalOcean account with a credit card attached to it. If you don't, go ahead and set that up before reading any further. They're not going to let you run a Droplet with 4 vCPU and over 16GB of RAM for free!
+I'm going to assume you have a DigitalOcean account with a credit card attached to it. If you don't, go ahead and set that up before reading any further. They're not going to let you run a Droplet with 8 vCPU and 16GB of RAM for free!
 
 Get started by creating a new project on DigitalOcean. Name it something boring, like "CRC OpenShift 4", and give it a similarly sensible description.
 
@@ -69,26 +69,37 @@ SSH into your Droplet once it finishes provisioning. Read this [DigitalOcean How
 
 CodeReady Containers should not be run as the root user, so the first thing to do is create another user, e.g `crc-user`.
 
-1. `ssh root@$DROPLET_IP`
-1. `useradd crc-user` 
-1. `passwd crc-user`
-1. `sudo usermod -aG wheel crc-user`
-1. `exit` (the next command is run from your development/client machine)
-1. `ssh-copy-id crc-user@$DROPLET_IP`
+```bash
+ssh root@$DROPLET_IP
+useradd crc-user
+passwd crc-user
+sudo usermod -aG wheel crc-user
+```
+
+Now that the user is added, you can copy add your SSH key to the authorised
+keys for the new user. Run this from your development/client machine: 
+
+```bash
+ssh-copy-id crc-user@$DROPLET_IP
+```
 
 There's more you can do to secure your Droplet, but that's outside the scope of this guide. Step 2 in [this guide](https://www.digitalocean.com/community/tutorials/initial-setup-of-a-fedora-22-server) for Fedora is a start!
 
 ## Install Dependencies and Confgure firewalld
 
-1. `ssh crc-user@$DROPLET_IP` (note that it's `crc-user` this time!)
-1. `sudo dnf -y install NetworkManager haproxy firewalld policycoreutils-python-utils`
-1. `sudo systemctl start libvirtd`
-1. `sudo systemctl start firewalld`
-1. `sudo firewall-cmd --add-port=80/tcp --permanent`
-1. `sudo firewall-cmd --add-port=6443/tcp --permanent`
-1. `sudo firewall-cmd --add-port=443/tcp --permanent`
-1. `sudo systemctl restart firewalld`
-1. `sudo semanage port -a -t http_port_t -p tcp 6443`
+```bash
+# Note that you SSH as crc-user this time!
+ssh crc-user@$DROPLET_IP
+
+sudo dnf -y install NetworkManager haproxy firewalld policycoreutils-python-utils
+sudo systemctl start libvirtd
+sudo systemctl start firewalld
+sudo firewall-cmd --add-port=80/tcp --permanent
+sudo firewall-cmd --add-port=6443/tcp --permanent
+sudo firewall-cmd --add-port=443/tcp --permanent
+sudo systemctl restart firewalld
+sudo semanage port -a -t http_port_t -p tcp 6443
+```
 
 Before moving on, verify that a valid `nameserver` entry is set in `/etc/resolv.conf`. The primary nameserver needs to be set to `127.0.0.1` so OpenShift Routes can be resolved. I used `1.1.1.1` as my secondary nameserver. The updated `/etc/resolv.conf` will look like this:
 
@@ -100,13 +111,20 @@ nameserver 1.1.1.1
 
 ## Download and Run CodeReady Containers
 
-I've inclued a URL in the first step here for completeness, but if it fails you can check [cloud.redhat.com/openshift/install/crc/installer-provisioned](https://cloud.redhat.com/openshift/install/crc/installer-provisioned) to find a working URL.
+I've included a URL in the first step here for completeness, but if it fails you can check [cloud.redhat.com/openshift/install/crc/installer-provisioned](https://cloud.redhat.com/openshift/install/crc/installer-provisioned) to find a working URL.
 
-1. `curl https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz > crc-linux-amd64.tar.xz`
-1. `tar -xf crc-linux-amd64.tar.xz`
-1. `sudo mv crc-linux-1.16.0-amd64/crc /usr/local/bin/`
-1. Use `crc version` to verify the binary is on the `PATH`. If it's working correctly version info should be printed to the console.
-1. `crc setup`.
+```bash
+# Download, unpack, and move CRC the binary onto the PATH
+curl https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz > crc-linux-amd64.tar.xz
+tar -xf crc-linux-amd64.tar.xz
+sudo mv crc-linux-1.16.0-amd64/crc /usr/local/bin/
+
+# Verify the binary is on the PATH. It should print version information.
+crc version
+
+# If the version command worked, run this setup command
+crc setup
+```
 
 The `crc setup` command takes a minute to run, so now is a good time to get a "pull secret" prepared for the next step.
 
@@ -115,7 +133,7 @@ The `crc setup` command takes a minute to run, so now is a good time to get a "p
 {:.caption}
 Obtain the Pull Secret under the cluster creation UI. You can also find the CodeReady Containers download URL here by right-clicking the "Download Code-Ready Containers" button and choosing "Copy Link Location".
 
-The pull secret is found on [cloud.redhat.com/openshift](https://cloud.redhat.com/openshift/):
+Your pull secret is found on [cloud.redhat.com](https://cloud.redhat.com/openshift/):
 
 1. Login to [cloud.redhat.com/openshift](https://cloud.redhat.com/openshift/).
 1. Select *Clusters* from the side menu.
@@ -174,7 +192,9 @@ backend api
     server webserver1 CRC_IP:6443 check port 6443
 ```
 
-Start HAProxy using the `sudo systemctl start haproxy` command. If this fails use `haproxy -f /etc/haproxy/haproxy.cfg -db` to view logs and diagnose the issue.
+Start HAProxy using the `sudo systemctl start haproxy` command.
+
+If HAProxy fails to start, use `haproxy -f /etc/haproxy/haproxy.cfg -db` to view logs and diagnose the issue.
 
 Note that the **CodeReady Container VM IP can change** on reboots/restarts. If the IP changes you'll need to update the `haproxy.cfg` with the new IP and run `sudo systemctl restart haproxy`!
 
@@ -182,11 +202,10 @@ Note that the **CodeReady Container VM IP can change** on reboots/restarts. If t
 
 As Jason said in his post, there's no right or wrong way to do this, but you'll need to tell your development machine how to resolve the CodeReady Container URLs, i.e to resolve URLs with the `testing` suffix to your `$DROPLET_IP`.
 
-This is pretty easy to configure for the static OpenShift routes via `/etc/hosts` on Linux and macOS. Add the following line to your `/etc/hosts` file: 
+This is pretty easy to configure for the static OpenShift routes via `/etc/hosts` on Linux and macOS. Add the following line to your `/etc/hosts` file, and don't forget to replace `$DROPLET_IP` with the correct value: 
 
-```
+```bash
 # CodeReady Containers (running on DigitalOcean)
-# REMEMEBER: you need to replace $DROPLET_IP with your actual droplet ip
 $DROPLET_IP api.crc.testing oauth-openshift.apps-crc.testing console-openshift-console.apps-crc.testing default-route-openshift-image-registry.apps-crc.testing
 ```
 
