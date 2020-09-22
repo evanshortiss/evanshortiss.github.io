@@ -209,7 +209,7 @@ This is pretty easy to configure for the static OpenShift routes via `/etc/hosts
 $DROPLET_IP api.crc.testing oauth-openshift.apps-crc.testing console-openshift-console.apps-crc.testing default-route-openshift-image-registry.apps-crc.testing
 ```
 
-DNS resolution for deployed application Routes is a little less straightforward. This is because they are wildcard routes, i.e `*.apps-crc.testing`. I had hoped my [PiHole](https://pi-hole.net/) would help with this, but it doesn't seem to support wildcards. Instead used **dnsmsaq**. 
+DNS resolution for deployed application Routes is a little less straightforward. This is because they are wildcard routes, i.e `*.apps-crc.testing`. I had hoped my [PiHole](https://pi-hole.net/) would help with this, but it doesn't seem to support setting a redirect for wildcards. I used **dnsmsaq** instead. 
 
 These commands will configure **dnsmasq** to resolve your CodeReady Containers installation on DigitalOcean on macOS:
 
