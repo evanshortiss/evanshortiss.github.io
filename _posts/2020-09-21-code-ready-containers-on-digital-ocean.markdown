@@ -108,12 +108,14 @@ I've inclued a URL in the first step here for completeness, but if it fails you 
 1. Use `crc version` to verify the binary is on the `PATH`. If it's working correctly version info should be printed to the console.
 1. `crc setup`.
 
+The `crc setup` command takes a minute to run, so now is a good time to get a "pull secret" prepared for the next step.
+
 ![](/res/img/posts/2020-09-21-code-ready-containers-on-digital-ocean/crc-pull-secret.png)
 
 {:.caption}
 Obtain the Pull Secret under the cluster creation UI. You can also find the CodeReady Containers download URL here by right-clicking the "Download Code-Ready Containers" button and choosing "Copy Link Location".
 
-To start CodeReady Containers you need a "pull secret". This is found on [cloud.redhat.com/openshift](https://cloud.redhat.com/openshift/):
+The pull secret is found on [cloud.redhat.com/openshift](https://cloud.redhat.com/openshift/):
 
 1. Login to [cloud.redhat.com/openshift](https://cloud.redhat.com/openshift/).
 1. Select *Clusters* from the side menu.
@@ -125,7 +127,7 @@ To start CodeReady Containers you need a "pull secret". This is found on [cloud.
 1. Paste your pull secret into a file, e.g `vi ~/crc-pull-secret.json` and paste the contents.
 1. `crc start -p ~/crc-pull-secret.json`
 
-CodeReady Containers takes a minute or two to start, so this is a good time to mindlessly browse Reddit or Twitter.
+CodeReady Containers will take a minute or two to start, so this is a good time to mindlessly browse Reddit or Twitter.
 
 ## Configure HAProxy
 
@@ -172,7 +174,7 @@ backend api
     server webserver1 CRC_IP:6443 check port 6443
 ```
 
-4. Start HAProxy `sudo systemctl start haproxy` (if this fails use `haproxy -f /etc/haproxy/haproxy.cfg -db` to view logs and diagnose the issue)
+Start HAProxy using the `sudo systemctl start haproxy` command. If this fails use `haproxy -f /etc/haproxy/haproxy.cfg -db` to view logs and diagnose the issue.
 
 Note that the **CodeReady Container VM IP can change** on reboots/restarts. If the IP changes you'll need to update the `haproxy.cfg` with the new IP and run `sudo systemctl restart haproxy`!
 
