@@ -156,15 +156,26 @@ HAProxy will route HTTP and HTTPS traffic to CodeReady Containers:
 1. Paste the following configuration into `/etc/haproxy/haproxy.cfg`, being sure to **replace the `CRC_IP`** strings with the IP obtained using `crc ip`:
 
 ```
-global
-        debug
-
 defaults
-        log global
-        mode    http
-        timeout connect 5000
-        timeout client 5000
-        timeout server 5000
+    mode http
+    log global
+    option httplog
+    option  http-server-close
+    option  dontlognull
+    option  redispatch
+    option  contstats
+    retries 3
+    backlog 10000
+    timeout client          25s
+    timeout connect          5s
+    timeout server          25s
+    timeout tunnel        3600s
+    timeout http-keep-alive  1s
+    timeout http-request    15s
+    timeout queue           30s
+    timeout tarpit          60s
+    default-server inter 3s rise 2 fall 3
+    option forwardfor
 
 frontend apps
     bind 0.0.0.0:80
@@ -177,7 +188,7 @@ backend apps
     mode tcp
     balance roundrobin
     option tcp-check
-    server webserver1 CRC_IP check port 80
+    server webserver1 192.168.130.11 check port 80
 
 frontend api
     bind 0.0.0.0:6443
@@ -189,7 +200,7 @@ backend api
     mode tcp
     balance roundrobin
     option tcp-check
-    server webserver1 CRC_IP:6443 check port 6443
+    server webserver1 192.168.130.11:6443 check port 6443
 ```
 
 Start HAProxy using the `sudo systemctl start haproxy` command.
