@@ -5,6 +5,8 @@ layout: post
 categories: development openshift
 ---
 
+_Note: The official documentation for CodeReady Containers now includes a section similar to this post. You can find the official documentation [at this link](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.19/html-single/getting_started_guide/index#setting-up-remote-server_gsg)._
+
 This is a slightly customised version of Jason Dobies' post [on the Official OpenShift blog](https://www.openshift.com/blog/accessing-codeready-containers-on-a-remote-server/). That blog was inspired by Trevor McKay's GitHub Gist [found here](https://gist.github.com/tmckayus/8e843f90c44ac841d0673434c7de0c6a). That means I'm being incredibly derivative with this one, but I had fun and I hope you find it interesting!
 
 Like Jason, I sometimes want admin access to a full, but lightweight OpenShift development environment. Running [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview) on my Macbook works well, but it's not fun when Firefox, Chrome, Visual Studio Code are also in competition for my 16 gigs of memory. I'd also rather my Macbook's fans didn't spin at 100% speed all the time.
