@@ -39,7 +39,7 @@ _Note: I'm going to assume you're starting from scratch, but if you have an exis
 repository with a React application that was generated via Create React App or
 that uses `react-scripts` you can skip to the bash script below._
 
-To use this approach head over to [github.com/new](https://github.com/new, _blank)
+To use this approach head over to [github.com/new](https://github.com/new)
 and do the following:
 
 * Enter a **Repository name**
