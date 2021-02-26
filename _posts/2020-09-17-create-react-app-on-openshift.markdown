@@ -68,7 +68,7 @@ git push origin master
 oc new-project webapp
 
 # Create a new BuildConfig on OpenShift based on the Node.js & NGINX builder
-# --to:         The name for the output container image
+# --name        The name for the output container image stream
 # --build-env   Environment variable indicating where the builder image should
 #               look for the bundled web application. This is the result of
 #               running "npm build" or "yarn build". For CRA this is a "build"
@@ -107,8 +107,8 @@ npx create-react-app $APPLICATION_NAME
 oc new-project webapp
 
 # Create a new BuildConfig on OpenShift based on the Node.js & NGINX builder
-# --binary:     Indicates we'll trigger builds by uploading assets directly
-# --to:         The name for the output container image
+# --binary      Indicates we'll trigger builds by uploading assets directly
+# --to          The name for the output container image stream
 # --build-env   Environment variable indicating where the builder image should
 #               look for the bundled web application. This is the result of
 #               running "npm build" or "yarn build". For CRA this is a "build"
