@@ -7,7 +7,7 @@ categories: kubernetes openshift nodejs
 
 Posting this almost as a "note to self", so I'll keep it short.
 
-Here's how to pretty print [pino](https://github.com/pinojs/pino) logs if\
+Here's how to pretty print [pino](https://github.com/pinojs/pino) logs if
 you're using [stern](https://github.com/wercker/stern) to view them from a
 Node.js Pod running on Kubernetes or OpenShift:
 
