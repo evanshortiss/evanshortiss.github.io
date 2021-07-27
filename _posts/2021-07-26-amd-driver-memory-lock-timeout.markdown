@@ -34,7 +34,9 @@ so I cut it some slack when this issue started occurring. After multiple driver
 updates I started to lose hope though. The awful state of the GPU market made
 matters even worse. Returning it would result in credit/cash towards a
 new massively overpriced GPU. Worse again, I bought it from the UK so I wasn't
-sure how the Brexit shenanigans might affect the return process.
+sure how the Brexit shenanigans might affect the return process. Another matter
+of concern is that this appears to be a software issue when using certain
+monitors and refresh rates, so the return might have been rejected.
 
 After trying ~~almost~~ literally every fix posted online, I eventually
 found that I could "fix" the problem by lowering my refresh rate to 120Hz.
