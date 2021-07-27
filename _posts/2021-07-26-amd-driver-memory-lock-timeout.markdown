@@ -96,6 +96,7 @@ colour depth of my monitor:
 1. Start the CRU program.
 1. Take note of the **Pixel Clock** listed beside the default entry for 144Hz (or whatever resolution/refresh rate combination is causing trouble for you).
 1. Add a new entry under the **Detailed Resolutions**.
+1. Double click this new entry to open the Edit dialog.
 1. Select *Automatic (PC)* from the **Timing** dropdown.
 1. Set the **Refresh Rate** to a value that results in a **Pixel Clock** that's equal to, or less than, the default value.
 1. Click the OK button to save the custom resolution.
