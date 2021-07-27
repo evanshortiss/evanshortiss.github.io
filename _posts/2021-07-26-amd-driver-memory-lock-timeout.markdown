@@ -137,9 +137,10 @@ vs 136Hz and that I shouldn't have wasted my time on this first world problem? ð
   </tbody>
 </table>
 
-Anyways, click the "OK" button to close CRU. Run the **restart64** executable
-included with your CRU download. Your screen will go blank for a moment, then
-come back to life. Now, head over to the Windows display settings.
+No, this effort is for "science"! Anyways, click the "OK" button to close CRU.
+Run the **restart64** executable included with your CRU download. Your screen
+will go blank for a moment, then come back to life. Now, head over to the
+Windows display settings.
 
 ![Windows display settings](/res/img/posts/2021-07-26-amd-driver-memory-lock-timeout/display-settings.png)
 
