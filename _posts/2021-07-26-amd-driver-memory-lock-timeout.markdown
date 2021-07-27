@@ -15,22 +15,26 @@ stopped responding and has successfully recovered".
 
 ![AMD Driver Timeout Dialog](https://i.imgur.com/vMw4VvX.png)
 
+There are many potential causes for this issue. Poor RAM compatibility,
+unstable RAM timings, unstable overclock, and a weak PSU seem to be common
+causes. In my case it appears to be a specific AMD Driver issue due to my GPU
+and monitor combination.
 
-_NOTE: There are many causes for this issue. Poor RAM compatibility, unstable RAM timings, unstable overclock, and a weak PSU seem to be common causes. In my case it appears to be a specific AMD Driver issue combined with certain monitors/GPUs._
-
-I'm the proud owner of an MSI "Radeon RX 5600 XT GAMING X". It's a pretty great
-GPU for the price. Well, that's assuming you can get it for a reasonable price
-these days. Unfortunately the AMD drivers combined with my specific GPU and
-monitor have a major fucking issue when gaming at 1440p 144Hz in Windows; the
-driver crashes occasionally. And yes, based on my limited testing, Fedora Linux
-34 does not suffer from this issue when gaming.
+I'm the proud owner of an MSI *Radeon RX 5600 XT GAMING X*. It's a fantastic
+GPU for the price; assuming you can find one at MSRP these days. It's cooler is
+an [absolute unit](https://knowyourmeme.com/memes/absolute-unit), so it has a
+nice feature that allows it to disable the fans when not gaming. Unfortunately
+the AMD drivers combined with my specific GPU and monitor have a major fucking
+issue when gaming at 1440p 144Hz in Windows; the driver crashes occasionally.
+And yes, based on my limited testing, Fedora Linux 34 does not suffer from this
+issue when gaming at 1440p 144Hz.
 
 This GPU had a [bit of rough a launch](https://www.techspot.com/news/85113-amd-recommends-radeon-rx-5600-xt-owners-update.html),
 so I cut it some slack when this issue started occurring. After multiple driver
 updates I started to lose hope though. The awful state of the GPU market made
 matters even worse. Returning it would result in credit/cash towards a
 new massively overpriced GPU. Worse again, I bought it from the UK so I wasn't
-sure how Brexit shenanigans might affect the return process.
+sure how the Brexit shenanigans might affect the return process.
 
 After trying ~~almost~~ literally every fix posted online, I eventually
 found that I could "fix" the problem by lowering my refresh rate to 120Hz.
@@ -46,9 +50,9 @@ was fixed. Spoiler alert: it's not fixed, at least not for some of us. During
 my latest test I noticed that my VRAM was constantly locked at 1750Mz when I
 set my refresh rate to 144Hz. This is fine when gaming, but why would it be
 locked so high when the PC is idle? As soon as I changed my refresh rate back
-to 120Hz the VARM was able to fluctuate between 200Mhz and 1750Mhz, depending
+to 120Hz the VRAM was able to fluctuate between 200Mhz and 1750Mhz, depending
 on workload. Why is it fine at 1750Mhz gaming at 120Hz and not when gaming at
-144Hz? I don't know, but I knew that I had a new lead.
+144Hz? I still don't know, but I knew that I had a lead.
 
 Using the VRAM clock speed clue leads us to a fantastic solution by
 [Hard Reset on YouTube](https://www.youtube.com/watch?v=Td3mBgE1Dsc). Their
@@ -71,10 +75,10 @@ but selecting either would fail and revert back to 6 bpc.
 *NOTE: I'm pretty sure this is harmless, but it's on you to look into what's appropriate and safe for your hardware/software. I'm not responsible for any damage, fucks ups, annoyance, or whatever else happens if this doesn't work out for you.*
 
 I'm not a video expert, but I assume the custom resolution configuration was
-maxing out the available bandwidth on my Display Port. Now, I know for a fact
-that I can run at 1440p 144Hz with 10 bit colour on my hardware since the
-non-custom resolutions support this, albeit with a once daily crash when
-gaming. Knowing this, I spent a few minutes tweaking the custom resolution
+maxing out the available bandwidth on my DisplayPort. Now, I know for a fact
+that I can run at 1440p 144Hz with 10 bit colour via DisplayPort on my hardware
+since the non-custom resolutions support this, albeit with a once daily crash
+when gaming. Knowing this, I spent a few minutes tweaking the custom resolution
 settings in Radeon Software to try get it to expand the colour depth while
 retaining a high-refresh rate. After 5 minutes I accepted defeat 😢
 
