@@ -39,7 +39,9 @@ of concern is that this appears to be a software issue when using certain
 monitors and refresh rates, so the return might have been rejected.
 
 After trying ~~almost~~ literally every fix posted online, I eventually
-found that I could "fix" the problem by lowering my refresh rate to 120Hz.
+found that I could "fix" the problem by lowering my refresh rate to 120Hz. I
+wasn't totally satisfied with this so I kept digging, as you'll see in this
+post.
 
 Is this the definition first world problem? Sure is. But on the other hand I
 paid for the whole monitor and GPU, so
