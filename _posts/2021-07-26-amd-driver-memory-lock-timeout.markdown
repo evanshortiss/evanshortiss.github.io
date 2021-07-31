@@ -179,6 +179,8 @@ settings!
 
 You can see that my custom refresh rate of 136Hz retains 10 bit depth. It
 might be possible to push the refresh rate higher and maintain the 10 bits, but
-I'm happy with the initial discovery!
+I've been unable to find a setting that does so with my monitor and GPU. A few
+tutorials state that increasing the blanking on the default resolution profile
+does the trick too, so it might be worth trying.
 
 ![Windows display settings after](/res/img/posts/2021-07-26-amd-driver-memory-lock-timeout/advanced-display-settings-after.png)
