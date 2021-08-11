@@ -13,10 +13,13 @@ that Google returns for macOS wasn't great. Most guides are either outdated or
 contain what appear to be errors in the Terminal commands, so the steps below
 are what I used to create a working Windows 10 64-Bit USB installer in 2020.
 
+_Update: Two helpful readers reached out to me with alternative methods after I published this post. They are described under the **[Method 2](#method-2)** and **[Method 3](#method-3)** headings. Consider trying those easier options before you try my **[Method 1](#method-1)**. Personally, I have only tested **[Method 1](#method-1)**._
+
+## Method 1
+
 This guide is mostly based on the one by Quincy Larson on
 [freecodecamp.org](https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/),
 but it contains modifications that I found necessary to get it working.
-
 
 ### Open a Terminal
 We'll be using the Terminal on your Mac to create the bootable USB. If you
@@ -30,6 +33,7 @@ install it:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
+_Make sure to copy the entire command. This might require you to scroll horizontally._
 
 Once you have Homebrew installed, quit the Terminal application (the shortcut
 is CMD + Q), then reopen it. Install wimlib by running `brew install wimlib` in
@@ -98,12 +102,26 @@ rsync -vha --exclude=sources/install.wim $WIN_VOLUME/* /Volumes/$DRIVE_NAME
 
 ### Copy install.wim to the USB
 Use the following `wimlib` command to copy the final install file to the USB
-drive: 
+drive:
 
 ```bash
 wimlib-imagex split $WIN_VOLUME/sources/install.wim /Volumes/$DRIVE_NAME/sources/install.swm 4000
 ```
+_Make sure to copy the entire command. This might require you to scroll horizontally._
 
 ### Unmount the USB & Install Windows
 Eject the USB by running `diskutil unmount $DRIVE_MOUNT` and use it to install
 Windows!
+
+## Method 2
+
+I managed to find the video shared by this helpful person via YouTube, but I
+must have deleted their email. Whoever you are, thank you!
+
+Here's a link to the [YouTube video by George Holden](https://www.youtube.com/watch?v=GptehG90Wg4).
+
+## Method 3
+
+Tim King shared the following tip. I believe it's the same as Method 2!
+
+_I hadn’t realised that the simplest method of all was to format the USB stick as ExFAT, thus removing the 4Gb file size limitation of FAT32. This method had the added advantage of taking just a few seconds to complete._
