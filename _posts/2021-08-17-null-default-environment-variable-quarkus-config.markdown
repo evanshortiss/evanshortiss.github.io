@@ -25,7 +25,7 @@ where I'm going wrong here:
 String secretValue;
 ```
 
-Surely secretValue` would be set to `null` if it's missing from the
+Surely `secretValue` would be set to `null` if it's missing from the
 _application.properties_, right?. In reality, this raises an error that states
 "could not expand value SECRET_HEADER_VALUE in property security.header.value".
 Fair enough. Quarkus has a great [config reference](https://quarkus.io/guides/config-reference)
