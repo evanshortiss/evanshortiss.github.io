@@ -22,8 +22,8 @@ or the Radeon Software Metrics, as shown.
 
 There are two straightforward solutions to this problem. The easiest option is
 to change your refresh rate to 120Hz in the Advanced display settings of
-Windows, but that kinda sucks especially you've payed for 24Hz more that
-your conscious mind can barely perceive 😉
+Windows, but that kinda sucks. Especially when you've payed for 24Hz more that
+your consciousness can barely perceive 😉
 
 <table style="text-align: center;margin: auto;padding: 1.5em 1em;">
   <thead>
