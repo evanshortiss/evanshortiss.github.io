@@ -22,11 +22,35 @@ or the Radeon Software Metrics, as shown.
 
 There are two straightforward solutions to this problem. The easiest option is
 to change your refresh rate to 120Hz in the Advanced display settings of
-Windows.
+Windows, but that kinda sucks especially you've payed for 24Hz more that
+your conscious mind can barely perceive 😉
 
-If you absolutely need your higher refresh rate, then you can correct your
-higher refresh rate to use correct/standard timings with CRU
-(Custom Resolution Utility) like so:
+<table style="text-align: center;margin: auto;padding: 1.5em 1em;">
+  <thead>
+    <tr>
+      <th style="padding: 0 1em;">Refresh Rate</th>
+      <th style="padding: 0 1em;">Frametime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>144Hz</td>
+      <td>6.944ms</td>
+    </tr>
+    <tr>
+      <td>120Hz</td>
+      <td>8.333ms</td>
+    </tr>
+    <tr>
+      <td>60Hz</td>
+      <td>16.666ms</td>
+    </tr>
+  </tbody>
+</table>
+
+If you really want 144/165Hz then you need to correct your high refresh rate to
+use correct/standard VESA timings with CRU (Custom Resolution Utility) like
+so:
 
 1. Download [CRU](https://www.techspot.com/downloads/7345-custom-resolution-utility.html) and unzip it.
 1. Start the CRU program by double-clicking the blue icon.
