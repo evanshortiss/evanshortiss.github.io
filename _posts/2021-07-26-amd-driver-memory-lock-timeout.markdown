@@ -76,8 +76,11 @@ simply increase the Vertical Blank from the default value. Increasing it from
 the default of 56 to 98 works for me, but the exact values will probably vary
 across monitors.
 
-That's all folks, no need to read beyond here unless you're bored and want some
-background information!
+That's all folks! Hopefully fixing your monitor timing and vertical blanking
+resolves your AMD driver timeouts like it did for me.
+
+No need to read beyond here unless you're bored and want some background
+information!
 
 ## The Issue
 
@@ -133,8 +136,11 @@ my latest test I noticed that my VRAM was constantly locked at 1750Mz when I
 set my refresh rate to 144Hz. This is fine when gaming, but why would it be
 locked so high when the PC is idle? As soon as I changed my refresh rate back
 to 120Hz the VRAM was able to fluctuate between 200Mhz and 1750Mhz, depending
-on workload. Why is it fine at 1750Mhz gaming at 120Hz, but not fine at 1750Mhz
-when gaming at 144Hz? I still don't know, but I knew that I had found a lead.
+on workload. Why is it fine pinned to 1750Mhz gaming at 120Hz, but not fine
+when pinned at 1750Mhz and gaming at 144Hz? I still don't fully understand,
+but I knew that I had found a lead. Another interesting aspect to this bug is
+that my VRAM can overclock to more than 1800Mhz just fine, it's only when 144Hz
+is being used that I experience the random driver timeouts.
 
 Using the VRAM clock speed clue leads us to a fantastic solution by
 [Hard Reset on YouTube](https://www.youtube.com/watch?v=Td3mBgE1Dsc). Their
@@ -146,7 +152,7 @@ Image quality seemed different when using my new custom resolution. It wasn't ve
 noticeable, but what has been seen cannot be unseen. Every time I opened a new
 tab in my web browser I could see a grain on the blank page if I looked closely.
 I think this was because the custom resolution was limiting colour depth.
-Radeon Software liste 8 and 10 bit colour options, but selecting either would
+Radeon Software listed 8 and 10 bit colour options, but selecting either would
 fail and revert back to 6 bpc after using the technique from that YouTube
 video.
 
