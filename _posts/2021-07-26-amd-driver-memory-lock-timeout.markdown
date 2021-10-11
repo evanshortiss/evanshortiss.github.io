@@ -7,11 +7,13 @@ categories: windows amd drivers
 
 ## Summary/TLDR
 
-Do this at your own risk. I am not an expert. If something goes wrong use
-Safe-Mode and the CRU reset script to fix it, etc.
+My driver timeouts are related to my 144 Hz monitor and GPU driver not playing
+nice, as far as I can tell.
 
-First, confirm your timeout has a similar cause to mine. You can do this by
-checking your VRAM frequency. If the VRAM frequency is constantly at max, then
+_Note: I think this fix is just a trivial config change, but follow this guide at your own risk. If something goes wrong use Safe-Mode and the CRU reset script to fix it, etc._
+
+First, confirm your driver timeout has a similar cause to mine. You can verify this by
+checking your VRAM frequency. If the VRAM frequency is constantly maxed out, then
 you might have the same or similar issue. This frequency should be able to
 drop to a few hundred MHz when the PC is idle, but mine was locked at 1750MHz
 which is the default max VRAM speed for my 5600 XT GPU. Remember to close all
@@ -22,8 +24,8 @@ or the Radeon Software Metrics, as shown.
 
 There are two straightforward solutions to this problem. The easiest option is
 to change your refresh rate to 120Hz in the Advanced display settings of
-Windows, but that kinda sucks. Especially when you've payed for 24Hz more that
-your consciousness can barely perceive 😉
+Windows, but what if you've payed for 24Hz more that your consciousness can
+barely perceive? 😉
 
 <table style="text-align: center;margin: auto;padding: 1.5em 1em;">
   <thead>
@@ -54,7 +56,7 @@ so:
 
 1. Download [CRU](https://www.techspot.com/downloads/7345-custom-resolution-utility.html) and unzip it.
 1. Start the CRU program by double-clicking the blue icon.
-1. Double-click your 144/165Hz resolution from the *Detailed resolutions* list.
+1. Double-click your 144/165Hz resolution from the *Detailed resolutions* list. This should be the same as the resolution you've set in your Windows Advanced Display settings.
 1. Change the *Timing* setting from **Manual** to **Automatic (PC)**. Don't change anything else.
 
     ![CRU Automatic Timing](/res/img/posts/2021-07-26-amd-driver-memory-lock-timeout/summary-cru-automatic-pc.png)
@@ -69,6 +71,10 @@ to adjusting the timing using CRU. You can see that my 5600 XT VRAM idles at
 
 ![Fixed VRAM Clock](/res/img/posts/2021-07-26-amd-driver-memory-lock-timeout/summary-fixed-clocks.png)
 
+This completely resolves the crashes on my PC. I don't entirely understand why,
+but I won't question it. I can even overclock my VRAM and it will happily run
+constantly at over 1800 Mhz when gaming, so it's not the memory frequency.
+
 Using the automatic CRU timings at 144Hz supports 8-bit colour on my monitor.
 The highest refresh rate I can obtain with 10-bit colour via CRU is 138Hz.
 I also found that I could leave all timing settings in CRU at the defaults and
@@ -76,7 +82,7 @@ simply increase the Vertical Blank from the default value. Increasing it from
 the default of 56 to 98 works for me, but the exact values will probably vary
 across monitors.
 
-That's all folks! Hopefully fixing your monitor timing and vertical blanking
+That's all folks! Hopefully fixing your monitor timings and vertical blanking
 resolves your AMD driver timeouts like it did for me.
 
 No need to read beyond here unless you're bored and want some background
