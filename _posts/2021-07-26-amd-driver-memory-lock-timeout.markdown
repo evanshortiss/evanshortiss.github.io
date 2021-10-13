@@ -7,8 +7,8 @@ categories: windows amd drivers
 
 ## Summary/TLDR
 
-My driver timeouts are related to my 144 Hz monitor and GPU driver not playing
-nice, as far as I can tell.
+My driver timeouts are related to my 144 Hz monitor and AMD GPU driver not playing
+nice, as far as I can tell. This [YouTube video](https://www.youtube.com/watch?v=Td3mBgE1Dsc) has an even quicker fix.
 
 _Note: I think this fix is just a trivial config change, but follow this guide at your own risk. If something goes wrong use Safe-Mode and the CRU reset script to fix it, etc._
 
