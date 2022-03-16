@@ -44,11 +44,11 @@ I'm out and about.
 Here's how to get started:
 
 1. Sign-up for Tailscale (it's free!)
-1. Setup the Tailscale [client](https://tailscale.com/download/) on your machines (that's macOS and Fedora in my case)
+1. Setup the [Tailscale client](https://tailscale.com/download/) on your machines (that's macOS and Fedora in my case)
 1. Start CRC on the Fedora PC and expose it via HAProxy ([all explained in sections 3.2 and 5.4 of the CRC docs](https://access.redhat.com/documentation/en-us/red_hat_codeready_containers/1.40/html/getting_started_guide/))
 
 In the image below you can see both of my machines listed in the **Machines**
-section of the Tailscale UI, so I know they're configured correctly. I further
+section of the Tailscale UI, so I knew they were configured correctly. I further
 verified connectivity by SSH'ing from my MacBook Pro to the Fedora machine
 using the Tailscale interface IP address, i.e `ssh evan@100.80.245.58` ([enable SSH on Fedora](https://docs.fedoraproject.org/en-US/fedora/f34/system-administrators-guide/infrastructure-services/OpenSSH/#s2-ssh-configuration-sshd) if you want to do this!).
 
