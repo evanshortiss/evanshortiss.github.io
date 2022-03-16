@@ -36,8 +36,8 @@ DNS challenges.
 
 Turns out [Tailscale](https://tailscale.com/) is a perfect solution to managing
 a small mesh network. Tailscale provides a zero config option for connecting all
-of my devices via a VPN. Basically, Tailscale enables peer-to-peer mesh of
-connections between registered devices using the WireGuard protocol. This means
+of my devices via a VPN. Basically, Tailscale enables a peer-to-peer mesh of encrypted
+connections between registered your devices using the WireGuard protocol. This means
 that my MacBook can communicate with my Fedora machine in my office, even when
 I'm out and about. 
 
