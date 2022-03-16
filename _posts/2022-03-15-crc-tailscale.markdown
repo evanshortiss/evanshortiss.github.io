@@ -5,8 +5,6 @@ layout: post
 categories: openshift
 ---
 
-## CodeReady Containers Everywhere and Anywhere
-
 This post serves as a quick summary of a setup I'm using to access my OpenShift
 cluster, based on CodeReady Containers (CRC). The TLDR is that I'm using
 Tailscale to create a mesh network so I can access my devices anywhere, and
