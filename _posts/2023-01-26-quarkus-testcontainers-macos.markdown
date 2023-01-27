@@ -1,11 +1,11 @@
 ---
 published: true
-title: Quarkus and Testcontainers on macOS
+title: Quarkus, Podman, and Testcontainers on macOS
 layout: post
 categories: containers
 ---
 
-Recently, I wanted to use Podman for running Testcontainers with a Quarkus application. I followed this helpful [post by Stephen Nimmo](https://stephennimmo.com/using-podman-with-quarkus-and-testcontainers-on-macos/), but my containers were not being run in the Podman VM. It turns out that running both Podman and Docker on the same machine can make things less than straightforward!
+Recently, I wanted to use Podman for running Testcontainers with a Quarkus application on my Mac. I followed this helpful [post by Stephen Nimmo](https://stephennimmo.com/using-podman-with-quarkus-and-testcontainers-on-macos/), but my containers were not being run in the Podman VM. It turns out that running both Podman and Docker on the same machine can make things less than straightforward!
 
 If you find yourself in the same situation it's probably because you started the Docker VM before the Podman VM (via `podman machine start` or [Podman Desktop](https://podman-desktop.io/)). This means that Docker is still running and listening at `/var/run/docker.sock` and therefore Testcontainers is talking to it instead of Podman. 
 
